@@ -1,0 +1,984 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Xung đột và Cách Giải Quyết trong Git &#8212; Git-book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/bootstrap.css?v=b4a3e8ba" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?v=f4fbef65" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter3/section3';</script>
+    <script src="../_static/searchtools.js?v=d24376de"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=4bc35cb3"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?v=4e4fcec4"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quản lý mã nguồn với GitHub" href="section4.html" />
+    <link rel="prev" title="Quản trị Mã Nguồn với Git" href="section2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Git-book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Git-book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chào mừng đến với Git-Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Chương 3: Quản lý mã nguồn với Git và GitHub</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="section1.html">Giới thiệu về Quản trị Mã Nguồn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section2.html">Quản trị Mã Nguồn với Git</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Xung đột và Cách Giải Quyết trong Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="section4.html">Quản lý mã nguồn với GitHub</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SIT-SELab/git-book.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SIT-SELab/git-book.git/issues/new?title=Issue%20on%20page%20%2Fchapter3/section3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter3/section3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Xung đột và Cách Giải Quyết trong Git</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-ve-xung-dot-trong-git">1. Giới thiệu về Xung đột trong Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-loai-xung-dot">2. Các loại xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xung-dot-merge">2.1. Xung đột merge:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xung-dot-rebase">2.2. Xung đột rebase:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xung-dot-cherry-pick">2.3 Xung đột cherry-pick:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-du">Ví dụ:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nguyen-nhan-gay-xung-dot-khi-cherry-pick">Nguyên nhân gây xung đột khi Cherry-Pick</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cach-giai-quyet-xung-dot-khi-cherry-pick">Cách Giải Quyết Xung Đột khi Cherry-Pick</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-1-chay-lenh-cherry-pick">Bước 1: Chạy lệnh Cherry-Pick</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-2-kiem-tra-tep-bi-xung-dot">Bước 2: Kiểm tra tệp bị xung đột</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-3-mo-tep-va-giai-quyet-xung-dot">Bước 3: Mở tệp và giải quyết xung đột</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-4-them-tep-da-chinh-sua-vao-staging-area">Bước 4: Thêm tệp đã chỉnh sửa vào Staging Area</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-5-tiep-tuc-cherry-pick">Bước 5: Tiếp tục Cherry-Pick</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-6-huy-cherry-pick-neu-can">Bước 6: Hủy Cherry-Pick nếu cần</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-du-minh-hoa">Ví dụ Minh Họa</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tinh-huong">Tình huống:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#giai-quyet">Giải quyết:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tom-lai">Tóm lại</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phat-hien-xung-dot">3. Phát hiện xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-git-status">3.1 Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-git-diff">3.2 Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-du-phat-hien-xung-dot">Ví dụ Phát Hiện Xung Đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Tình huống:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Phát hiện xung đột:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phong-tranh-xung-dot">4. Phòng tránh xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4. Phòng tránh xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-hanh-tot-khi-lam-viec-nhom">Thực hành tốt khi làm việc nhóm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thuong-xuyen-cap-nhat-nhanh">Thường xuyên cập nhật nhánh</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-pull-request">Sử dụng pull request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ket-luan">5. Kết luận</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tom-tat-cac-buoc-giai-quyet-xung-dot">Tóm tắt các bước giải quyết xung đột</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-viec-quan-ly-xung-dot-hieu-qua">Tầm quan trọng của việc quản lý xung đột hiệu quả</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="xung-dot-va-cach-giai-quyet-trong-git">
+<h1>Xung đột và Cách Giải Quyết trong Git<a class="headerlink" href="#xung-dot-va-cach-giai-quyet-trong-git" title="Link to this heading">#</a></h1>
+<section id="gioi-thieu-ve-xung-dot-trong-git">
+<h2>1. Giới thiệu về Xung đột trong Git<a class="headerlink" href="#gioi-thieu-ve-xung-dot-trong-git" title="Link to this heading">#</a></h2>
+<p>Xung đột trong Git xảy ra khi hai hoặc nhiều thay đổi đối với cùng một phần của mã nguồn không thể tự động hợp nhất.</p>
+<ul class="simple">
+<li><p>Ví dụ:</p>
+<ul>
+<li><p>Hai lập trình viên chỉnh sửa cùng một dòng trong cùng một file và cố gắng merge các thay đổi của họ.</p></li>
+<li><p>Một lập trình viên xóa một file trong khi một lập trình viên khác chỉnh sửa file đó.</p></li>
+</ul>
+</li>
+<li><p>Hậu quả của xung đột trong Git có thể bao gồm:</p>
+<ul>
+<li><p>Gián đoạn công việc: Xung đột cần được giải quyết trước khi có thể tiếp tục làm việc, gây ra sự gián đoạn trong quá trình phát triển.</p></li>
+<li><p>Mất thời gian: Việc giải quyết xung đột có thể tốn nhiều thời gian, đặc biệt khi có nhiều xung đột phức tạp.</p></li>
+<li><p>Nguy cơ lỗi: Nếu xung đột không được giải quyết cẩn thận, có thể dẫn đến lỗi trong mã nguồn hoặc mất mát dữ liệu.</p></li>
+<li><p>Khó khăn trong hợp tác: Xung đột thường xảy ra trong các dự án có nhiều lập trình viên, gây khó khăn trong việc hợp tác và quản lý mã nguồn.</p></li>
+</ul>
+</li>
+<li><p>Để giảm thiểu hậu quả của xung đột, các lập trình viên nên thường xuyên cập nhật và đẩy mã nguồn, cũng như sử dụng các công cụ hỗ trợ quản lý xung đột hiệu quả.</p></li>
+</ul>
+</section>
+<section id="cac-loai-xung-dot">
+<h2>2. Các loại xung đột<a class="headerlink" href="#cac-loai-xung-dot" title="Link to this heading">#</a></h2>
+<section id="xung-dot-merge">
+<h3>2.1. Xung đột merge:<a class="headerlink" href="#xung-dot-merge" title="Link to this heading">#</a></h3>
+<p>Xung đột merge xảy ra khi Git không thể tự động hợp nhất các thay đổi từ hai nhánh khác nhau. Điều này thường xảy ra khi có sự thay đổi đối với cùng một dòng hoặc cùng một vùng trong file.
+- Ví dụ: Hai lập trình viên chỉnh sửa cùng một đoạn mã trong cùng một file và cố gắng hợp nhất các thay đổi của họ.
+- Để giải quyết xung đột merge, lập trình viên cần chỉnh sửa thủ công các phần xung đột trong file và sau đó hoàn tất quá trình merge bằng cách sử dụng lệnh <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> và <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
+</section>
+<section id="xung-dot-rebase">
+<h3>2.2. Xung đột rebase:<a class="headerlink" href="#xung-dot-rebase" title="Link to this heading">#</a></h3>
+<p>Xung đột rebase xảy ra khi Git không thể tự động áp dụng các thay đổi từ một nhánh khác lên nhánh hiện tại trong quá trình rebase. Điều này thường xảy ra khi có sự thay đổi đối với cùng một dòng hoặc cùng một vùng trong file.</p>
+<ul class="simple">
+<li><p>Ví dụ: Một lập trình viên thay đổi một đoạn mã trong nhánh chính, trong khi một lập trình viên khác thay đổi cùng đoạn mã đó trong nhánh tính năng và sau đó cố gắng rebase nhánh tính năng lên nhánh chính.</p></li>
+<li><p>Để giải quyết xung đột rebase, lập trình viên cần chỉnh sửa thủ công các phần xung đột trong file và sau đó hoàn tất quá trình rebase bằng cách sử dụng lệnh <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">--continue</span></code>.</p></li>
+</ul>
+</section>
+<section id="xung-dot-cherry-pick">
+<h3>2.3 Xung đột cherry-pick:<a class="headerlink" href="#xung-dot-cherry-pick" title="Link to this heading">#</a></h3>
+<p><strong>Cherry-pick</strong> trong Git là quá trình áp dụng một commit cụ thể từ một nhánh này sang một nhánh khác mà không cần hợp nhất toàn bộ nhánh. Cherry-pick hữu ích khi bạn muốn sao chép một số thay đổi cụ thể (nhưng không phải toàn bộ) giữa các nhánh.</p>
+</section>
+<section id="vi-du">
+<h3>Ví dụ:<a class="headerlink" href="#vi-du" title="Link to this heading">#</a></h3>
+<p>Giả sử bạn có nhánh <code class="docutils literal notranslate"><span class="pre">feature</span></code> với các commit sau:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">---</span> <span class="n">E</span> <span class="p">(</span><span class="n">main</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">---</span> <span class="n">B</span> <span class="o">---</span> <span class="n">C</span> <span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Bạn muốn áp dụng commit <code class="docutils literal notranslate"><span class="pre">B</span></code> từ nhánh <code class="docutils literal notranslate"><span class="pre">feature</span></code> vào nhánh <code class="docutils literal notranslate"><span class="pre">main</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;hash-of-B&gt;
+</pre></div>
+</div>
+<p>Kết quả:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">---</span> <span class="n">B</span> <span class="o">---</span> <span class="n">C</span> <span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+        \
+         <span class="n">D</span> <span class="o">---</span> <span class="n">E</span> <span class="o">---</span> <span class="sa">B</span><span class="s1">&#39; (main)</span>
+</pre></div>
+</div>
+<section id="nguyen-nhan-gay-xung-dot-khi-cherry-pick">
+<h4>Nguyên nhân gây xung đột khi Cherry-Pick<a class="headerlink" href="#nguyen-nhan-gay-xung-dot-khi-cherry-pick" title="Link to this heading">#</a></h4>
+<p>Xung đột xảy ra khi commit được cherry-pick chứa các thay đổi xung đột với mã nguồn hiện tại của nhánh đích. Ví dụ:</p>
+<ul class="simple">
+<li><p>Một dòng mã đã được thay đổi trong cả nhánh nguồn và nhánh đích.</p></li>
+<li><p>Commit được cherry-pick cố gắng sửa đổi hoặc xóa một đoạn mã không tồn tại trong nhánh đích.</p></li>
+</ul>
+</section>
+<section id="cach-giai-quyet-xung-dot-khi-cherry-pick">
+<h4>Cách Giải Quyết Xung Đột khi Cherry-Pick<a class="headerlink" href="#cach-giai-quyet-xung-dot-khi-cherry-pick" title="Link to this heading">#</a></h4>
+<p>Khi xung đột xảy ra, Git sẽ thông báo và yêu cầu bạn giải quyết trước khi hoàn tất cherry-pick.</p>
+<section id="buoc-1-chay-lenh-cherry-pick">
+<h5>Bước 1: Chạy lệnh Cherry-Pick<a class="headerlink" href="#buoc-1-chay-lenh-cherry-pick" title="Link to this heading">#</a></h5>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;commit-hash&gt;
+</pre></div>
+</div>
+<p>Nếu có xung đột, Git sẽ hiển thị thông báo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">error</span><span class="p">:</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">apply</span> <span class="o">&lt;</span><span class="n">commit</span><span class="o">-</span><span class="nb">hash</span><span class="o">&gt;</span>
+<span class="n">hint</span><span class="p">:</span> <span class="n">after</span> <span class="n">resolving</span> <span class="n">the</span> <span class="n">conflicts</span><span class="p">,</span> <span class="n">mark</span> <span class="n">the</span> <span class="n">corrected</span> <span class="n">paths</span>
+      <span class="k">with</span> <span class="s1">&#39;git add &lt;paths&gt;&#39;</span> <span class="ow">and</span> <span class="n">run</span> <span class="s1">&#39;git cherry-pick --continue&#39;</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="buoc-2-kiem-tra-tep-bi-xung-dot">
+<h5>Bước 2: Kiểm tra tệp bị xung đột<a class="headerlink" href="#buoc-2-kiem-tra-tep-bi-xung-dot" title="Link to this heading">#</a></h5>
+<p>Git sẽ đánh dấu các tệp bị xung đột. Sử dụng lệnh sau để kiểm tra:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>Kết quả sẽ hiển thị các tệp bị xung đột:</p>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="nt">both</span><span class="w"> </span><span class="nt">modified</span><span class="nd">:</span><span class="w"> </span><span class="nt">file</span><span class="nc">.txt</span>
+</pre></div>
+</div>
+</section>
+<section id="buoc-3-mo-tep-va-giai-quyet-xung-dot">
+<h5>Bước 3: Mở tệp và giải quyết xung đột<a class="headerlink" href="#buoc-3-mo-tep-va-giai-quyet-xung-dot" title="Link to this heading">#</a></h5>
+<p>Mở tệp bị xung đột (ví dụ <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>) và chỉnh sửa các phần được đánh dấu:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="w"> </span><span class="nt">HEAD</span>
+<span class="nt">Nội</span><span class="w"> </span><span class="nt">dung</span><span class="w"> </span><span class="nt">hiện</span><span class="w"> </span><span class="nt">tại</span><span class="w"> </span><span class="nt">trong</span><span class="w"> </span><span class="nt">nhánh</span><span class="w"> </span><span class="nt">đích</span><span class="o">.</span>
+<span class="o">=======</span>
+<span class="nt">Nội</span><span class="w"> </span><span class="nt">dung</span><span class="w"> </span><span class="nt">từ</span><span class="w"> </span><span class="nt">commit</span><span class="w"> </span><span class="nt">được</span><span class="w"> </span><span class="nt">cherry-pick</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">commit-hash</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Chỉnh sửa để giữ lại nội dung đúng:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">Nội</span><span class="w"> </span><span class="nt">dung</span><span class="w"> </span><span class="nt">đã</span><span class="w"> </span><span class="nt">giải</span><span class="w"> </span><span class="nt">quyết</span><span class="w"> </span><span class="nt">xung</span><span class="w"> </span><span class="nt">đột</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="buoc-4-them-tep-da-chinh-sua-vao-staging-area">
+<h5>Bước 4: Thêm tệp đã chỉnh sửa vào Staging Area<a class="headerlink" href="#buoc-4-them-tep-da-chinh-sua-vao-staging-area" title="Link to this heading">#</a></h5>
+<p>Sau khi chỉnh sửa, thêm tệp vào Staging Area:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>file.txt
+</pre></div>
+</div>
+</section>
+<section id="buoc-5-tiep-tuc-cherry-pick">
+<h5>Bước 5: Tiếp tục Cherry-Pick<a class="headerlink" href="#buoc-5-tiep-tuc-cherry-pick" title="Link to this heading">#</a></h5>
+<p>Hoàn tất cherry-pick bằng cách chạy lệnh:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>--continue
+</pre></div>
+</div>
+</section>
+<section id="buoc-6-huy-cherry-pick-neu-can">
+<h5>Bước 6: Hủy Cherry-Pick nếu cần<a class="headerlink" href="#buoc-6-huy-cherry-pick-neu-can" title="Link to this heading">#</a></h5>
+<p>Nếu bạn muốn hủy quá trình cherry-pick, sử dụng lệnh:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>--abort
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="vi-du-minh-hoa">
+<h4>Ví dụ Minh Họa<a class="headerlink" href="#vi-du-minh-hoa" title="Link to this heading">#</a></h4>
+<section id="tinh-huong">
+<h5>Tình huống:<a class="headerlink" href="#tinh-huong" title="Link to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Trong nhánh <code class="docutils literal notranslate"><span class="pre">main</span></code>, nội dung <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello, world!
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Trong nhánh <code class="docutils literal notranslate"><span class="pre">feature</span></code>, commit <code class="docutils literal notranslate"><span class="pre">B</span></code> thay đổi <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> thành:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello, Git!
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Khi bạn cherry-pick commit <code class="docutils literal notranslate"><span class="pre">B</span></code> từ <code class="docutils literal notranslate"><span class="pre">feature</span></code> sang <code class="docutils literal notranslate"><span class="pre">main</span></code>, xung đột xảy ra vì tệp <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> đã thay đổi trên cả hai nhánh.</p></li>
+</ol>
+</section>
+<section id="giai-quyet">
+<h5>Giải quyết:<a class="headerlink" href="#giai-quyet" title="Link to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Mở <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> và chỉnh sửa:</p></li>
+</ol>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>Hello, world!
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Chỉnh sửa để giữ lại nội dung đúng:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello, Git and world!
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Thêm tệp vào Staging Area:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>file.txt
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Tiếp tục cherry-pick:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>--continue
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tom-lai">
+<h4>Tóm lại<a class="headerlink" href="#tom-lai" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Cherry-pick là công cụ mạnh mẽ để sao chép các commit cụ thể giữa các nhánh.</p></li>
+<li><p>Xung đột có thể xảy ra khi các thay đổi giữa nhánh nguồn và nhánh đích không tương thích.</p></li>
+<li><p>Quy trình giải quyết xung đột khi cherry-pick tương tự như giải quyết xung đột khi merge:</p>
+<ul>
+<li><p>Kiểm tra tệp bị xung đột.</p></li>
+<li><p>Chỉnh sửa và thêm vào Staging Area.</p></li>
+<li><p>Hoàn tất hoặc hủy cherry-pick.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="phat-hien-xung-dot">
+<h2>3. Phát hiện xung đột<a class="headerlink" href="#phat-hien-xung-dot" title="Link to this heading">#</a></h2>
+<p>Trong Git, xung đột xảy ra khi các thay đổi từ hai commit hoặc hai nhánh không thể được hợp nhất một cách tự động. Phát hiện và xử lý xung đột là một phần quan trọng khi làm việc với Git.</p>
+<section id="su-dung-git-status">
+<h3>3.1 Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code><a class="headerlink" href="#su-dung-git-status" title="Link to this heading">#</a></h3>
+<p>Lệnh <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> giúp bạn kiểm tra trạng thái của repository, bao gồm danh sách các tệp bị xung đột. Sau khi chạy lệnh merge hoặc cherry-pick, nếu xảy ra xung đột, bạn sẽ thấy thông báo như sau:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>Kết quả mẫu:</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">On</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="n">main</span>
+<span class="n">You</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">unmerged</span><span class="w"> </span><span class="n">paths</span><span class="p">.</span>
+<span class="w">  </span><span class="p">(</span><span class="n">fix</span><span class="w"> </span><span class="n">conflicts</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="s">&quot;git commit&quot;</span><span class="p">)</span>
+
+<span class="n">Unmerged</span><span class="w"> </span><span class="n">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="p">(</span><span class="n">use</span><span class="w"> </span><span class="s">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">mark</span><span class="w"> </span><span class="n">resolution</span><span class="p">)</span>
+<span class="w">    </span><span class="n">both</span><span class="w"> </span><span class="n">modified</span><span class="p">:</span><span class="w">   </span><span class="n">file</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Ý nghĩa</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">both</span> <span class="pre">modified</span></code>: Cả nhánh hiện tại và nhánh được hợp nhất đều thay đổi tệp <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>.</p></li>
+</ul>
+</section>
+<section id="su-dung-git-diff">
+<h3>3.2 Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code><a class="headerlink" href="#su-dung-git-diff" title="Link to this heading">#</a></h3>
+<p>Lệnh <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> giúp bạn kiểm tra nội dung xung đột trong tệp. Mở rộng thêm thông tin về các thay đổi từ cả hai phía.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff
+</pre></div>
+</div>
+<p>Kết quả:</p>
+<ul class="simple">
+<li><p>Phần giữa <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="pre">HEAD</span></code> và <code class="docutils literal notranslate"><span class="pre">=======</span></code> là nội dung từ nhánh hiện tại.</p></li>
+<li><p>Phần giữa <code class="docutils literal notranslate"><span class="pre">=======</span></code> và <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></code> là nội dung từ nhánh được hợp nhất.</p></li>
+<li><p>Dòng <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="pre">feature-branch</span></code> cho biết commit hoặc nhánh gây ra xung đột.</p></li>
+</ul>
+<section id="vi-du-phat-hien-xung-dot">
+<h4>Ví dụ Phát Hiện Xung Đột<a class="headerlink" href="#vi-du-phat-hien-xung-dot" title="Link to this heading">#</a></h4>
+<section id="id1">
+<h5>Tình huống:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Bạn có nhánh <code class="docutils literal notranslate"><span class="pre">main</span></code> với nội dung <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello, world!
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Trên nhánh <code class="docutils literal notranslate"><span class="pre">feature</span></code>, bạn thay đổi <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> thành:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello, Git!
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Khi hợp nhất nhánh <code class="docutils literal notranslate"><span class="pre">feature</span></code> vào <code class="docutils literal notranslate"><span class="pre">main</span></code>:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>feature
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Kết quả:</p></li>
+</ol>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">CONFLICT</span><span class="w"> </span><span class="o">(</span><span class="nt">content</span><span class="o">):</span><span class="w"> </span><span class="nt">Merge</span><span class="w"> </span><span class="nt">conflict</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">file</span><span class="p">.</span><span class="nc">txt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h4>Phát hiện xung đột:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Chạy <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> để xác định tệp bị xung đột:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>Kết quả:</p>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="nt">both</span><span class="w"> </span><span class="nt">modified</span><span class="nd">:</span><span class="w">   </span><span class="nt">file</span><span class="nc">.txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Chạy <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> để xem chi tiết xung đột:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff
+</pre></div>
+</div>
+<p>Kết quả:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<span class="gh">Hello, world!</span>
+<span class="gh">=======</span>
+Hello, Git!
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature
+</pre></div>
+</div>
+<p>Ta có thể chỉnh sửa <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> để giải quyết xung đột và tiếp tục công việc.
+Tóm lại, sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> và <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> là bước đầu tiên quan trọng trong quá trình xác định và xử lý xung đột. Chúng giúp bạn hiểu rõ tình trạng repository và các thay đổi gây ra xung đột, từ đó có hướng giải quyết hiệu quả.</p>
+</section>
+</section>
+</section>
+<section id="phong-tranh-xung-dot">
+<h2>4. Phòng tránh xung đột<a class="headerlink" href="#phong-tranh-xung-dot" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>4. Phòng tránh xung đột<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="thuc-hanh-tot-khi-lam-viec-nhom">
+<h4>Thực hành tốt khi làm việc nhóm<a class="headerlink" href="#thuc-hanh-tot-khi-lam-viec-nhom" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Giao tiếp rõ ràng và thường xuyên với các thành viên trong nhóm về các thay đổi và tiến độ công việc.</p></li>
+<li><p>Sử dụng các công cụ quản lý dự án để theo dõi và phân công công việc một cách hiệu quả.</p></li>
+</ul>
+</section>
+<section id="thuong-xuyen-cap-nhat-nhanh">
+<h4>Thường xuyên cập nhật nhánh<a class="headerlink" href="#thuong-xuyen-cap-nhat-nhanh" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Thường xuyên kéo (pull) các thay đổi mới nhất từ nhánh chính để giữ cho nhánh làm việc của bạn luôn được cập nhật.</p></li>
+<li><p>Đẩy (push) các thay đổi của bạn lên repository từ xa thường xuyên để tránh xung đột lớn.</p></li>
+</ul>
+</section>
+<section id="su-dung-pull-request">
+<h4>Sử dụng pull request<a class="headerlink" href="#su-dung-pull-request" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Sử dụng pull request để yêu cầu xem xét và hợp nhất các thay đổi của bạn vào nhánh chính.</p></li>
+<li><p>Thực hiện code review để phát hiện và giải quyết các vấn đề tiềm ẩn trước khi hợp nhất.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="ket-luan">
+<h2>5. Kết luận<a class="headerlink" href="#ket-luan" title="Link to this heading">#</a></h2>
+<section id="tom-tat-cac-buoc-giai-quyet-xung-dot">
+<h3>Tóm tắt các bước giải quyết xung đột<a class="headerlink" href="#tom-tat-cac-buoc-giai-quyet-xung-dot" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Chạy lệnh gây ra xung đột</strong>: Ví dụ <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code>, hoặc <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cherry-pick</span></code>.</p></li>
+<li><p><strong>Kiểm tra trạng thái repository</strong>: Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> để xác định các tệp bị xung đột.</p></li>
+<li><p><strong>Kiểm tra chi tiết xung đột</strong>: Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> để xem nội dung xung đột trong tệp.</p></li>
+<li><p><strong>Chỉnh sửa tệp bị xung đột</strong>: Mở tệp và chỉnh sửa các phần xung đột để giữ lại nội dung đúng.</p></li>
+<li><p><strong>Thêm tệp đã chỉnh sửa vào Staging Area</strong>: Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code>.</p></li>
+<li><p><strong>Hoàn tất quá trình</strong>: Sử dụng lệnh tương ứng như <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">--continue</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">--continue</span></code>, hoặc <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cherry-pick</span> <span class="pre">--continue</span></code>.</p></li>
+<li><p><strong>Hủy quá trình nếu cần</strong>: Sử dụng lệnh như <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">--abort</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">--abort</span></code>, hoặc <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cherry-pick</span> <span class="pre">--abort</span></code>.</p></li>
+</ol>
+</section>
+<section id="tam-quan-trong-cua-viec-quan-ly-xung-dot-hieu-qua">
+<h3>Tầm quan trọng của việc quản lý xung đột hiệu quả<a class="headerlink" href="#tam-quan-trong-cua-viec-quan-ly-xung-dot-hieu-qua" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Gián đoạn công việc</strong>: Giải quyết xung đột nhanh chóng giúp giảm thiểu gián đoạn trong quá trình phát triển.</p></li>
+<li><p><strong>Tiết kiệm thời gian</strong>: Quản lý xung đột hiệu quả giúp tiết kiệm thời gian và công sức của lập trình viên.</p></li>
+<li><p><strong>Giảm nguy cơ lỗi</strong>: Giải quyết xung đột cẩn thận giúp tránh lỗi trong mã nguồn và mất mát dữ liệu.</p></li>
+<li><p><strong>Tăng cường hợp tác</strong>: Quản lý xung đột tốt giúp cải thiện sự hợp tác và quản lý mã nguồn trong các dự án có nhiều lập trình viên.</p></li>
+<li><p><strong>Duy trì tiến độ dự án</strong>: Giảm thiểu xung đột giúp duy trì tiến độ và chất lượng của dự án.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="section2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quản trị Mã Nguồn với Git</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="section4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quản lý mã nguồn với GitHub</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-ve-xung-dot-trong-git">1. Giới thiệu về Xung đột trong Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-loai-xung-dot">2. Các loại xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xung-dot-merge">2.1. Xung đột merge:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xung-dot-rebase">2.2. Xung đột rebase:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xung-dot-cherry-pick">2.3 Xung đột cherry-pick:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-du">Ví dụ:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nguyen-nhan-gay-xung-dot-khi-cherry-pick">Nguyên nhân gây xung đột khi Cherry-Pick</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cach-giai-quyet-xung-dot-khi-cherry-pick">Cách Giải Quyết Xung Đột khi Cherry-Pick</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-1-chay-lenh-cherry-pick">Bước 1: Chạy lệnh Cherry-Pick</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-2-kiem-tra-tep-bi-xung-dot">Bước 2: Kiểm tra tệp bị xung đột</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-3-mo-tep-va-giai-quyet-xung-dot">Bước 3: Mở tệp và giải quyết xung đột</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-4-them-tep-da-chinh-sua-vao-staging-area">Bước 4: Thêm tệp đã chỉnh sửa vào Staging Area</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-5-tiep-tuc-cherry-pick">Bước 5: Tiếp tục Cherry-Pick</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#buoc-6-huy-cherry-pick-neu-can">Bước 6: Hủy Cherry-Pick nếu cần</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-du-minh-hoa">Ví dụ Minh Họa</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tinh-huong">Tình huống:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#giai-quyet">Giải quyết:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tom-lai">Tóm lại</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phat-hien-xung-dot">3. Phát hiện xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-git-status">3.1 Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-git-diff">3.2 Sử dụng <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-du-phat-hien-xung-dot">Ví dụ Phát Hiện Xung Đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Tình huống:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Phát hiện xung đột:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phong-tranh-xung-dot">4. Phòng tránh xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4. Phòng tránh xung đột</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-hanh-tot-khi-lam-viec-nhom">Thực hành tốt khi làm việc nhóm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thuong-xuyen-cap-nhat-nhanh">Thường xuyên cập nhật nhánh</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-pull-request">Sử dụng pull request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ket-luan">5. Kết luận</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tom-tat-cac-buoc-giai-quyet-xung-dot">Tóm tắt các bước giải quyết xung đột</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-viec-quan-ly-xung-dot-hieu-qua">Tầm quan trọng của việc quản lý xung đột hiệu quả</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bao-An Nguyen + ChatGPT
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
