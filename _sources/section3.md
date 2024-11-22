@@ -2,6 +2,7 @@
 
 ## 1. Giới thiệu về Xung đột trong Git
 Xung đột trong Git xảy ra khi hai hoặc nhiều thay đổi đối với cùng một phần của mã nguồn không thể tự động hợp nhất.
+
 - Ví dụ:
     - Hai lập trình viên chỉnh sửa cùng một dòng trong cùng một file và cố gắng merge các thay đổi của họ.
     - Một lập trình viên xóa một file trong khi một lập trình viên khác chỉnh sửa file đó.
