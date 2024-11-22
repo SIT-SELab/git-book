@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Các phương pháp Agile phổ biến &#8212; Git-book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/bootstrap.css?v=b4a3e8ba" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?v=f4fbef65" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/section2';</script>
+    <script src="../_static/searchtools.js?v=d24376de"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=4bc35cb3"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?v=4e4fcec4"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Git-book - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Git-book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chào mừng đến với Git-Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="section1.html">Giới Thiệu Công Nghệ Phần Mềm Agile</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/index.html">Chương 3: Quản lý mã nguồn với Git và GitHub</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section1.html">Giới thiệu về Quản trị Mã Nguồn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section2.html">Quản trị Mã Nguồn với Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section3.html">Xung đột và Cách Giải Quyết trong Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section4.html">Quản lý mã nguồn với GitHub</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SIT-SELab/git-book.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SIT-SELab/git-book.git/issues/new?title=Issue%20on%20page%20%2Fchapter1/section2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/section2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Các phương pháp Agile phổ biến</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrum">1. Scrum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-vai-tro-trong-scrum">Các vai trò trong Scrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#san-pham-dau-ra-cua-scrum">Sản phẩm đầu ra của Scrum</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kanban">2. Kanban</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-practices-va-cong-cu-cua-kanban">Các practices và công cụ của Kanban</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extreme-programming-xp">3. Extreme Programming (XP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Extreme Programming (XP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-loops-trong-extreme-programming-xp">Feedback Loops trong Extreme Programming (XP)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lean-software-development">Lean Software Development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Lean Software Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-cong-cu-va-thuc-hanh-cua-lean">Các công cụ và thực hành của Lean</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal">Crystal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-driven-development-fdd">Feature-Driven Development (FDD)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cac-phuong-phap-agile-pho-bien">
+<h1>Các phương pháp Agile phổ biến<a class="headerlink" href="#cac-phuong-phap-agile-pho-bien" title="Link to this heading">#</a></h1>
+<section id="scrum">
+<h2>1. Scrum<a class="headerlink" href="#scrum" title="Link to this heading">#</a></h2>
+<p>Scrum là một framework Agile phổ biến, tập trung vào việc quản lý dự án thông qua các sprint ngắn, thường kéo dài từ 2-4 tuần.</p>
+<p>Trong Scrum, công việc được quản lý thông qua các Sprint và Backlog.</p>
+<ul class="simple">
+<li><p><strong>Sprint</strong>: Là khoảng thời gian cố định, thường từ 2-4 tuần, trong đó một phần công việc cụ thể được hoàn thành và sẵn sàng để xem xét. Mỗi Sprint bắt đầu với một cuộc họp Sprint Planning, nơi các thành viên trong nhóm thảo luận và lập kế hoạch cho công việc sẽ được thực hiện trong Sprint đó. Sprint kết thúc với Sprint Review và Sprint Retrospective để đánh giá và cải thiện quy trình.</p></li>
+<li><p><strong>Product Backlog</strong>: Là danh sách các công việc cần làm để phát triển sản phẩm. Product Owner chịu trách nhiệm quản lý Product Backlog, đảm bảo rằng nó luôn được cập nhật, rõ ràng và ưu tiên theo giá trị kinh doanh. Các mục trong Product Backlog có thể bao gồm tính năng mới, sửa lỗi, cải tiến kỹ thuật và các yêu cầu khác.</p></li>
+<li><p><strong>Sprint Backlog</strong>: Là danh sách các công việc được chọn từ Product Backlog để hoàn thành trong một Sprint. Sprint Backlog được tạo ra trong cuộc họp Sprint Planning và được Development Team quản lý trong suốt Sprint. Nó bao gồm các nhiệm vụ cụ thể mà nhóm sẽ thực hiện để hoàn thành các mục tiêu của Sprint.</p></li>
+</ul>
+<p>Scrum sử dụng các công cụ này để đảm bảo rằng công việc được tổ chức, minh bạch và có thể dự đoán được, giúp nhóm phát triển phần mềm một cách hiệu quả và đáp ứng nhanh chóng các thay đổi yêu cầu.</p>
+<p><img alt="Scrum" src="../_images/fig1.2-scrum.webp" /></p>
+<p>Nguồn: <a class="reference external" href="https://agilemania.com/professional-scrum-master-psm-training">Professional Scrum Master (PSM) Training</a></p>
+<section id="cac-vai-tro-trong-scrum">
+<h3>Các vai trò trong Scrum<a class="headerlink" href="#cac-vai-tro-trong-scrum" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Product Owner</strong>: Người chịu trách nhiệm tối ưu hóa giá trị của sản phẩm và công việc của Development Team. Product Owner quản lý Product Backlog và đảm bảo rằng nó rõ ràng, minh bạch và được hiểu bởi tất cả các thành viên trong nhóm.</p></li>
+<li><p><strong>Scrum Master</strong>: Người chịu trách nhiệm đảm bảo rằng Scrum được hiểu và thực hiện đúng. Scrum Master giúp đỡ Development Team và tổ chức áp dụng các thực hành Scrum đúng cách.</p></li>
+<li><p><strong>Development Team</strong>: Nhóm các chuyên gia chịu trách nhiệm phát triển và hoàn thành các công việc trong Sprint. Development Team tự tổ chức và tự quản lý công việc của mình.</p></li>
+<li><p><strong>Sprint Planning</strong>: Cuộc họp bắt đầu mỗi Sprint, nơi Development Team và Product Owner thảo luận và lập kế hoạch cho công việc sẽ được thực hiện trong Sprint.</p></li>
+<li><p><strong>Daily Stand-up</strong>: Cuộc họp ngắn hàng ngày, thường kéo dài 15 phút, nơi các thành viên trong Development Team chia sẻ tiến độ, kế hoạch và các trở ngại gặp phải.</p></li>
+<li><p><strong>Sprint Review</strong>: Cuộc họp diễn ra vào cuối mỗi Sprint, nơi Development Team trình bày các công việc đã hoàn thành và nhận phản hồi từ các bên liên quan.</p></li>
+<li><p><strong>Sprint Retrospective</strong>: Cuộc họp diễn ra sau Sprint Review, nơi Development Team và Scrum Master thảo luận về những gì đã diễn ra tốt, những gì cần cải thiện và lập kế hoạch cho các cải tiến trong Sprint tiếp theo.</p></li>
+</ul>
+</section>
+<section id="san-pham-dau-ra-cua-scrum">
+<h3>Sản phẩm đầu ra của Scrum<a class="headerlink" href="#san-pham-dau-ra-cua-scrum" title="Link to this heading">#</a></h3>
+<p>Sản phẩm đầu ra của Scrum bao gồm các kết quả cụ thể từ mỗi Sprint và các tài liệu liên quan đến quy trình Scrum. Các sản phẩm đầu ra chính bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Increment</strong>: Là phiên bản hoàn chỉnh và có thể sử dụng của sản phẩm sau mỗi Sprint. Increment phải đáp ứng các tiêu chuẩn chất lượng và sẵn sàng để phát hành nếu cần thiết.</p></li>
+<li><p><strong>Sprint Goal</strong>: Là mục tiêu cụ thể mà nhóm đặt ra để đạt được trong mỗi Sprint. Sprint Goal giúp định hướng công việc và đảm bảo rằng tất cả các thành viên trong nhóm đều hiểu rõ mục tiêu của Sprint.</p></li>
+<li><p><strong>Sprint Backlog</strong>: Là danh sách các công việc được chọn từ Product Backlog để hoàn thành trong một Sprint. Sprint Backlog được cập nhật liên tục trong suốt Sprint để phản ánh tiến độ và các thay đổi nếu có.</p></li>
+<li><p><strong>Product Backlog</strong>: Là danh sách các công việc cần làm để phát triển sản phẩm. Product Backlog được cập nhật liên tục bởi Product Owner để phản ánh các yêu cầu mới, thay đổi ưu tiên và các công việc đã hoàn thành.</p></li>
+</ul>
+<p>Các sản phẩm đầu ra này giúp đảm bảo rằng nhóm phát triển phần mềm có thể cung cấp giá trị liên tục và đáp ứng nhanh chóng các thay đổi yêu cầu từ khách hàng và các bên liên quan.</p>
+</section>
+</section>
+<section id="kanban">
+<h2>2. Kanban<a class="headerlink" href="#kanban" title="Link to this heading">#</a></h2>
+<p><img alt="Kanban" src="https://scrumpass.com/wp-content/uploads/2024/05/1677634984855.jpg" /></p>
+<p>Nguồn: <a class="reference external" href="https://scrumpass.com/kanban-la-gi-cac-nguyen-tac-trong-kanban/">Scrumpass</a></p>
+<p>Kanban là một phương pháp Agile tập trung vào việc trực quan hóa quy trình làm việc và tối ưu hóa luồng công việc. Kanban giúp các nhóm phát triển phần mềm cải thiện hiệu suất và đáp ứng nhanh chóng các thay đổi yêu cầu. Các nguyên tắc chính của Kanban bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Trực quan hóa công việc</strong>: Sử dụng bảng Kanban để hiển thị các công việc và trạng thái của chúng. Các công việc được biểu diễn dưới dạng thẻ và di chuyển qua các cột tương ứng với các giai đoạn của quy trình làm việc.</p></li>
+<li><p><strong>Giới hạn công việc đang tiến hành (WIP)</strong>: Đặt giới hạn cho số lượng công việc đang tiến hành trong mỗi giai đoạn của quy trình. Điều này giúp ngăn ngừa quá tải và đảm bảo rằng nhóm tập trung vào hoàn thành công việc trước khi bắt đầu công việc mới.</p></li>
+<li><p><strong>Quản lý luồng công việc</strong>: Theo dõi và quản lý luồng công việc để đảm bảo rằng công việc di chuyển qua các giai đoạn một cách mượt mà và hiệu quả. Sử dụng các chỉ số như thời gian chu kỳ (cycle time) và thời gian dẫn (lead time) để đo lường hiệu suất.</p></li>
+<li><p><strong>Liên tục cải tiến</strong>: Thường xuyên đánh giá và cải tiến quy trình làm việc để tăng cường hiệu suất và chất lượng. Sử dụng các cuộc họp định kỳ như Kaizen để thảo luận và thực hiện các cải tiến.</p></li>
+</ul>
+<p>Kanban giúp các nhóm phát triển phần mềm duy trì sự linh hoạt và đáp ứng nhanh chóng các thay đổi yêu cầu từ khách hàng và các bên liên quan. Bằng cách trực quan hóa công việc và giới hạn WIP, Kanban giúp tối ưu hóa luồng công việc và cải thiện hiệu suất tổng thể của nhóm.</p>
+<section id="cac-practices-va-cong-cu-cua-kanban">
+<h3>Các practices và công cụ của Kanban<a class="headerlink" href="#cac-practices-va-cong-cu-cua-kanban" title="Link to this heading">#</a></h3>
+<p>Kanban sử dụng một số practices và công cụ để giúp các nhóm phát triển phần mềm quản lý công việc hiệu quả hơn. Dưới đây là một số practices và công cụ chính của Kanban:</p>
+<ul class="simple">
+<li><p><strong>Kanban Board</strong>: Bảng Kanban là công cụ trực quan hóa công việc, giúp nhóm theo dõi trạng thái của các công việc. Bảng Kanban thường được chia thành các cột tương ứng với các giai đoạn của quy trình làm việc, như “To Do”, “In Progress”, và “Done”.</p></li>
+<li><p><strong>Kanban Cards</strong>: Các thẻ Kanban đại diện cho các công việc hoặc nhiệm vụ cụ thể. Mỗi thẻ chứa thông tin chi tiết về công việc, như mô tả, người chịu trách nhiệm, và ngày hoàn thành dự kiến. Các thẻ được di chuyển qua các cột trên bảng Kanban khi công việc tiến triển.</p></li>
+<li><p><strong>Work In Progress (WIP) Limits</strong>: Giới hạn WIP là số lượng tối đa các công việc có thể đang tiến hành trong mỗi giai đoạn của quy trình. Giới hạn WIP giúp ngăn ngừa quá tải và đảm bảo rằng nhóm tập trung vào hoàn thành công việc trước khi bắt đầu công việc mới.</p></li>
+<li><p><strong>Cycle Time</strong>: Thời gian chu kỳ là khoảng thời gian từ khi một công việc bắt đầu cho đến khi nó hoàn thành. Theo dõi thời gian chu kỳ giúp nhóm hiểu rõ hơn về hiệu suất và khả năng dự đoán của quy trình làm việc.</p></li>
+<li><p><strong>Lead Time</strong>: Thời gian dẫn là khoảng thời gian từ khi một yêu cầu được đưa vào hệ thống cho đến khi nó hoàn thành. Thời gian dẫn giúp đo lường hiệu quả của quy trình từ góc độ khách hàng.</p></li>
+<li><p><strong>Cumulative Flow Diagram (CFD)</strong>: Biểu đồ luồng tích lũy là công cụ trực quan hóa giúp nhóm theo dõi luồng công việc qua các giai đoạn của quy trình. CFD giúp xác định các điểm tắc nghẽn và cải thiện hiệu suất.</p></li>
+</ul>
+<p><img alt="CFD" src="https://www.microtool.de/wp-content/uploads/2023/08/what-is-a-cumulative-flow-diagram.png" /></p>
+<p>Nguồn: <a class="reference external" href="https://www.microtool.de/en/knowledge-base/what-is-a-cumulative-flow-diagram/">Microtool</a></p>
+<ul class="simple">
+<li><p><strong>Kaizen</strong>: Kaizen là thực hành liên tục cải tiến quy trình làm việc. Nhóm thường xuyên tổ chức các cuộc họp Kaizen để thảo luận về những gì đã diễn ra tốt, những gì cần cải thiện, và lập kế hoạch cho các cải tiến.</p></li>
+</ul>
+<p>Các practices và công cụ này giúp Kanban trở thành một phương pháp linh hoạt và hiệu quả để quản lý công việc, tối ưu hóa luồng công việc và cải thiện hiệu suất tổng thể của nhóm phát triển phần mềm.</p>
+</section>
+</section>
+<section id="extreme-programming-xp">
+<h2>3. Extreme Programming (XP)<a class="headerlink" href="#extreme-programming-xp" title="Link to this heading">#</a></h2>
+<p><img alt="XP Core Practices" src="https://www.pythian.com/hubfs/Imported_Blog_Media/xp-core-practices-1.png" /></p>
+<p>Nguồn: <a class="reference external" href="https://www.pythian.com/blog/technical-track/top-5-extreme-programming-xp-tools-every-team-should-use">pythian.com</a></p>
+</section>
+<section id="id1">
+<h2>3. Extreme Programming (XP)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Extreme Programming (XP) là một phương pháp Agile tập trung vào việc cải thiện chất lượng phần mềm và khả năng đáp ứng thay đổi yêu cầu. XP khuyến khích các nhóm phát triển phần mềm áp dụng các thực hành tốt nhất và liên tục cải tiến quy trình làm việc. Các thực hành chính của XP bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Phát triển theo cặp (Pair Programming)</strong>: Hai lập trình viên làm việc cùng nhau trên một máy tính, một người viết mã và người kia xem xét mã. Điều này giúp cải thiện chất lượng mã và chia sẻ kiến thức giữa các thành viên trong nhóm.</p></li>
+<li><p><strong>Kiểm thử liên tục (Continuous Testing)</strong>: Việc kiểm thử phần mềm được thực hiện liên tục trong suốt quá trình phát triển. Các bài kiểm thử tự động được viết trước khi mã được triển khai, giúp phát hiện lỗi sớm và đảm bảo chất lượng phần mềm.</p></li>
+<li><p><strong>Tích hợp liên tục (Continuous Integration)</strong>: Mã nguồn được tích hợp và kiểm thử thường xuyên, thường là hàng ngày hoặc thậm chí nhiều lần trong ngày. Điều này giúp phát hiện sớm các vấn đề tích hợp và giảm rủi ro.</p></li>
+<li><p><strong>Phản hồi nhanh (Rapid Feedback)</strong>: XP khuyến khích việc nhận phản hồi nhanh chóng từ khách hàng và các bên liên quan thông qua các bản phát hành thường xuyên và các cuộc họp định kỳ. Phản hồi nhanh giúp nhóm điều chỉnh và cải tiến sản phẩm kịp thời.</p></li>
+</ul>
+<p>XP cũng bao gồm các thực hành khác như lập kế hoạch phát hành (Release Planning), lập kế hoạch lặp (Iteration Planning), và cải tiến liên tục (Continuous Improvement). Bằng cách áp dụng các thực hành này, XP giúp các nhóm phát triển phần mềm tạo ra sản phẩm chất lượng cao và đáp ứng nhanh chóng các thay đổi yêu cầu từ khách hàng.</p>
+<p><img alt="XP Core Practices" src="https://www.pythian.com/hubfs/Imported_Blog_Media/xp-core-practices-1.png" /></p>
+<p>Nguồn: <a class="reference external" href="https://www.pythian.com/blog/technical-track/top-5-extreme-programming-xp-tools-every-team-should-use">pythian.com</a></p>
+<section id="feedback-loops-trong-extreme-programming-xp">
+<h3>Feedback Loops trong Extreme Programming (XP)<a class="headerlink" href="#feedback-loops-trong-extreme-programming-xp" title="Link to this heading">#</a></h3>
+<p><img alt="XP Cycle" src="https://www.altexsoft.com/media/2018/02/XP-cycle.png" /></p>
+<p>Nguồn: <a class="reference external" href="https://www.altexsoft.com/blog/engineering/extreme-programming-practices/">AltexSoft</a></p>
+<p>Extreme Programming (XP) sử dụng nhiều vòng phản hồi (feedback loops) để đảm bảo rằng nhóm phát triển phần mềm có thể nhanh chóng phát hiện và giải quyết các vấn đề, cũng như cải thiện quy trình làm việc. Các vòng phản hồi chính trong XP bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Phản hồi từ khách hàng</strong>: XP khuyến khích việc nhận phản hồi thường xuyên từ khách hàng thông qua các bản phát hành thường xuyên và các cuộc họp định kỳ. Điều này giúp nhóm hiểu rõ hơn về yêu cầu của khách hàng và điều chỉnh sản phẩm kịp thời.</p></li>
+<li><p><strong>Phản hồi từ kiểm thử</strong>: Việc kiểm thử liên tục và tự động giúp nhóm phát hiện sớm các lỗi và vấn đề trong mã nguồn. Các bài kiểm thử được viết trước khi mã được triển khai, đảm bảo rằng mã luôn đáp ứng các tiêu chuẩn chất lượng.</p></li>
+<li><p><strong>Phản hồi từ tích hợp</strong>: Tích hợp liên tục giúp nhóm phát hiện sớm các vấn đề tích hợp và giảm rủi ro. Mã nguồn được tích hợp và kiểm thử thường xuyên, thường là hàng ngày hoặc thậm chí nhiều lần trong ngày.</p></li>
+<li><p><strong>Phản hồi từ phát triển theo cặp</strong>: Phát triển theo cặp (Pair Programming) giúp cải thiện chất lượng mã và chia sẻ kiến thức giữa các thành viên trong nhóm. Một lập trình viên viết mã trong khi người kia xem xét mã, cung cấp phản hồi ngay lập tức.</p></li>
+<li><p><strong>Phản hồi từ các cuộc họp định kỳ</strong>: XP sử dụng các cuộc họp định kỳ như lập kế hoạch lặp (Iteration Planning) và cải tiến liên tục (Continuous Improvement) để thảo luận về tiến độ, các vấn đề gặp phải và các cải tiến cần thiết. Các cuộc họp này giúp nhóm duy trì sự nhất quán và liên tục cải thiện quy trình làm việc.</p></li>
+</ul>
+<p>Các vòng phản hồi này giúp XP trở thành một phương pháp linh hoạt và hiệu quả để phát triển phần mềm, đảm bảo rằng nhóm có thể nhanh chóng đáp ứng các thay đổi yêu cầu và cung cấp sản phẩm chất lượng cao.</p>
+</section>
+</section>
+<section id="lean-software-development">
+<h2>Lean Software Development<a class="headerlink" href="#lean-software-development" title="Link to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2>Lean Software Development<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Lean Software Development là một phương pháp Agile dựa trên các nguyên tắc của Lean Manufacturing, tập trung vào việc tối ưu hóa quy trình phát triển phần mềm. Các nguyên tắc chính của Lean bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Loại bỏ lãng phí</strong>: Xác định và loại bỏ các hoạt động không tạo ra giá trị trong quy trình phát triển phần mềm.</p></li>
+<li><p><strong>Tăng cường học hỏi</strong>: Khuyến khích việc học hỏi liên tục và cải tiến quy trình làm việc thông qua phản hồi và thử nghiệm.</p></li>
+<li><p><strong>Quyết định càng muộn càng tốt</strong>: Trì hoãn các quyết định quan trọng cho đến khi có đủ thông tin để đưa ra quyết định chính xác.</p></li>
+<li><p><strong>Giao hàng càng sớm càng tốt</strong>: Phát hành các phiên bản phần mềm nhỏ và thường xuyên để nhận phản hồi sớm từ khách hàng.</p></li>
+<li><p><strong>Trao quyền cho nhóm</strong>: Trao quyền cho các thành viên trong nhóm để họ có thể tự quản lý và đưa ra các quyết định quan trọng.</p></li>
+<li><p><strong>Xây dựng chất lượng trong quy trình</strong>: Tích hợp các hoạt động kiểm thử và đảm bảo chất lượng vào từng giai đoạn của quy trình phát triển.</p></li>
+<li><p><strong>Tối ưu hóa toàn bộ hệ thống</strong>: Tối ưu hóa quy trình làm việc từ đầu đến cuối để đảm bảo hiệu suất và hiệu quả cao nhất.</p></li>
+</ul>
+<p>Lean Software Development giúp các nhóm phát triển phần mềm tạo ra sản phẩm chất lượng cao, giảm thiểu lãng phí và đáp ứng nhanh chóng các thay đổi yêu cầu từ khách hàng.</p>
+<section id="cac-cong-cu-va-thuc-hanh-cua-lean">
+<h3>Các công cụ và thực hành của Lean<a class="headerlink" href="#cac-cong-cu-va-thuc-hanh-cua-lean" title="Link to this heading">#</a></h3>
+<p>Lean Software Development sử dụng một số công cụ và thực hành để tối ưu hóa quy trình phát triển phần mềm và loại bỏ lãng phí. Dưới đây là một số công cụ và thực hành chính của Lean:</p>
+<ul class="simple">
+<li><p><strong>Value Stream Mapping</strong>: Công cụ này giúp nhóm xác định và phân tích các bước trong quy trình phát triển phần mềm để tìm ra các hoạt động không tạo ra giá trị và loại bỏ chúng.</p></li>
+<li><p><strong>Just-In-Time (JIT)</strong>: Thực hành này đảm bảo rằng các tài nguyên và công việc chỉ được cung cấp khi cần thiết, giúp giảm thiểu lãng phí và tối ưu hóa luồng công việc.</p></li>
+<li><p><strong>Kaizen</strong>: Kaizen là thực hành liên tục cải tiến quy trình làm việc. Nhóm thường xuyên tổ chức các cuộc họp Kaizen để thảo luận về những gì đã diễn ra tốt, những gì cần cải thiện, và lập kế hoạch cho các cải tiến.</p></li>
+<li><p><strong>5 Whys</strong>: Kỹ thuật này được sử dụng để tìm ra nguyên nhân gốc rễ của các vấn đề bằng cách hỏi “Tại sao?” năm lần hoặc cho đến khi nguyên nhân gốc rễ được xác định.</p></li>
+<li><p><strong>Kanban</strong>: Lean sử dụng bảng Kanban để trực quan hóa công việc và quản lý luồng công việc. Bảng Kanban giúp nhóm theo dõi trạng thái của các công việc và giới hạn công việc đang tiến hành (WIP).</p></li>
+<li><p><strong>Poka-Yoke</strong>: Đây là kỹ thuật ngăn ngừa lỗi bằng cách thiết kế quy trình hoặc công cụ để ngăn chặn các lỗi xảy ra hoặc phát hiện chúng ngay lập tức.</p></li>
+<li><p><strong>Continuous Integration (CI)</strong>: Thực hành này đảm bảo rằng mã nguồn được tích hợp và kiểm thử thường xuyên, giúp phát hiện sớm các vấn đề và giảm rủi ro.</p></li>
+</ul>
+<p><img alt="Continuous Integration" src="https://www.pagerduty.com/wp-content/uploads/2020/01/continuous-integration-2.png" /></p>
+<p>Nguồn: <a class="reference external" href="https://www.pagerduty.com/blog/continuous-integration/">PagerDuty</a></p>
+<ul class="simple">
+<li><p><strong>Test-Driven Development (TDD)</strong>: TDD là thực hành viết các bài kiểm thử tự động trước khi viết mã, giúp đảm bảo rằng mã luôn đáp ứng các tiêu chuẩn chất lượng và giảm thiểu lỗi.</p></li>
+</ul>
+<p><img alt="Test-Driven Development" src="https://images.spiceworks.com/wp-content/uploads/2022/09/29095630/How-TDD-Works.png" /></p>
+<p>Nguồn: <a class="reference external" href="https://images.spiceworks.com/wp-content/uploads/2022/09/29095630/How-TDD-Works.png">Spiceworks</a></p>
+<p>Các công cụ và thực hành này giúp Lean Software Development trở thành một phương pháp hiệu quả để phát triển phần mềm, tối ưu hóa quy trình làm việc và cải thiện chất lượng sản phẩm.</p>
+</section>
+</section>
+<section id="crystal">
+<h2>Crystal<a class="headerlink" href="#crystal" title="Link to this heading">#</a></h2>
+<p>Crystal là một họ các phương pháp Agile, mỗi phương pháp được thiết kế để phù hợp với quy mô và độ phức tạp của dự án. Các phiên bản phổ biến của Crystal bao gồm:</p>
+<ul class="simple">
+<li><p>Crystal Clear</p></li>
+<li><p>Crystal Yellow</p></li>
+<li><p>Crystal Orange</p></li>
+<li><p>Crystal Red</p></li>
+</ul>
+</section>
+<section id="feature-driven-development-fdd">
+<h2>Feature-Driven Development (FDD)<a class="headerlink" href="#feature-driven-development-fdd" title="Link to this heading">#</a></h2>
+<p>Feature-Driven Development (FDD) là một phương pháp Agile tập trung vào việc phát triển phần mềm thông qua các tính năng nhỏ, có thể giao hàng. Các bước chính của FDD bao gồm:</p>
+<ul class="simple">
+<li><p>Phát triển mô hình tổng thể</p></li>
+<li><p>Xây dựng danh sách tính năng</p></li>
+<li><p>Lập kế hoạch theo tính năng</p></li>
+<li><p>Thiết kế theo tính năng</p></li>
+<li><p>Xây dựng theo tính năng</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scrum">1. Scrum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-vai-tro-trong-scrum">Các vai trò trong Scrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#san-pham-dau-ra-cua-scrum">Sản phẩm đầu ra của Scrum</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kanban">2. Kanban</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-practices-va-cong-cu-cua-kanban">Các practices và công cụ của Kanban</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extreme-programming-xp">3. Extreme Programming (XP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Extreme Programming (XP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-loops-trong-extreme-programming-xp">Feedback Loops trong Extreme Programming (XP)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lean-software-development">Lean Software Development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Lean Software Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-cong-cu-va-thuc-hanh-cua-lean">Các công cụ và thực hành của Lean</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal">Crystal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-driven-development-fdd">Feature-Driven Development (FDD)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bao-An Nguyen + ChatGPT
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Giới Thiệu Công Nghệ Phần Mềm Agile &#8212; Git-book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/bootstrap.css?v=b4a3e8ba" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?v=f4fbef65" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/section1';</script>
+    <script src="../_static/searchtools.js?v=d24376de"></script>
+    <script src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js?v=4bc35cb3"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?v=4e4fcec4"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chương 3: Quản lý mã nguồn với Git và GitHub" href="../chapter3/index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Git-book - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Git-book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chào mừng đến với Git-Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Giới Thiệu Công Nghệ Phần Mềm Agile</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/index.html">Chương 3: Quản lý mã nguồn với Git và GitHub</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section1.html">Giới thiệu về Quản trị Mã Nguồn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section2.html">Quản trị Mã Nguồn với Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section3.html">Xung đột và Cách Giải Quyết trong Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/section4.html">Quản lý mã nguồn với GitHub</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SIT-SELab/git-book.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SIT-SELab/git-book.git/issues/new?title=Issue%20on%20page%20%2Fchapter1/section1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/section1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Giới Thiệu Công Nghệ Phần Mềm Agile</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-moc-thoi-gian-quan-trong">Các Mốc Thời Gian Quan Trọng</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-phuong-phap-phat-trien-phan-mem">Các Phương Pháp Phát Triển Phần Mềm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quy-trinh-phat-trien-phan-mem">1. Quy Trình Phát Triển Phần Mềm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mo-hinh-thac-nuoc">2. Mô Hình Thác Nước</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uu-diem">Ưu Điểm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khuyet-diem">Khuyết Điểm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#su-ra-doi-cua-agile">3. Sự Ra Đời Của Agile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nhu-cau-ve-mot-phuong-phap-linh-hoat-hon">Nhu Cầu Về Một Phương Pháp Linh Hoạt Hơn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tap-trung-vao-su-hop-tac-va-phan-hoi-nhanh-chong">Tập Trung Vào Sự Hợp Tác Và Phản Hồi Nhanh Chóng</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phat-trien-phan-mem-theo-tung-giai-doan-ngan-iterations">Phát Triển Phần Mềm Theo Từng Giai Đoạn Ngắn (Iterations)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agile-manifesto">Agile Manifesto</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bon-gia-tri-cot-loi">Bốn Giá Trị Cốt Lõi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#muoi-hai-nguyen-tac">Mười Hai Nguyên Tắc</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tinh-lap-va-tang-truong-trong-agile">Tính Lặp Và Tăng Trưởng Trong Agile</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-ich-cua-tinh-lap">Lợi Ích Của Tính Lặp</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tang-truong-lien-tuc">Tăng Trưởng Liên Tục</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-sanh-agile-va-waterfall">4. So Sánh Agile và Waterfall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agile">Agile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waterfall">Waterfall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bang-so-sanh">Bảng So Sánh</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="gioi-thieu-cong-nghe-phan-mem-agile">
+<h1>Giới Thiệu Công Nghệ Phần Mềm Agile<a class="headerlink" href="#gioi-thieu-cong-nghe-phan-mem-agile" title="Link to this heading">#</a></h1>
+<p>Công nghệ phần mềm là một lĩnh vực quan trọng trong ngành công nghệ thông tin, tập trung vào việc phát triển, duy trì và quản lý các hệ thống phần mềm. Dưới đây là các mốc thời gian quan trọng trong lịch sử của công nghệ phần mềm và các phương pháp tương ứng:</p>
+<section id="cac-moc-thoi-gian-quan-trong">
+<h2>Các Mốc Thời Gian Quan Trọng<a class="headerlink" href="#cac-moc-thoi-gian-quan-trong" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>1950s</strong>: Sự ra đời của máy tính điện tử và các ngôn ngữ lập trình đầu tiên như Fortran và COBOL.</p></li>
+<li><p><strong>1960s</strong>: Khái niệm về kỹ nghệ phần mềm bắt đầu hình thành, với sự xuất hiện của các phương pháp phát triển phần mềm có cấu trúc.</p></li>
+<li><p><strong>1970s</strong>: Mô hình thác nước (Waterfall) được giới thiệu, đánh dấu một bước tiến quan trọng trong việc quản lý dự án phần mềm.</p></li>
+<li><p><strong>1980s</strong>: Sự phát triển của các phương pháp hướng đối tượng (Object-Oriented) và ngôn ngữ lập trình như C++.</p></li>
+<li><p><strong>1990s</strong>: Sự ra đời của các phương pháp phát triển phần mềm linh hoạt (Agile) và các khung làm việc như Scrum và Extreme Programming (XP).</p></li>
+<li><p><strong>2000s</strong>: Sự phổ biến của DevOps, kết hợp phát triển phần mềm và vận hành hệ thống để tăng cường hiệu quả và tốc độ triển khai.</p></li>
+<li><p><strong>2010s</strong>: Sự xuất hiện của các công nghệ mới như trí tuệ nhân tạo (AI), học máy (Machine Learning) và phát triển phần mềm dựa trên đám mây (Cloud Computing).</p></li>
+</ul>
+</section>
+<section id="cac-phuong-phap-phat-trien-phan-mem">
+<h2>Các Phương Pháp Phát Triển Phần Mềm<a class="headerlink" href="#cac-phuong-phap-phat-trien-phan-mem" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Phương pháp có cấu trúc</strong>: Tập trung vào việc phân chia hệ thống thành các module nhỏ hơn và dễ quản lý.</p></li>
+<li><p><strong>Mô hình thác nước</strong>: Một quy trình tuần tự, trong đó mỗi giai đoạn phải hoàn thành trước khi chuyển sang giai đoạn tiếp theo.</p></li>
+<li><p><strong>Phương pháp hướng đối tượng</strong>: Tập trung vào việc sử dụng các đối tượng để mô hình hóa các thực thể trong hệ thống.</p></li>
+<li><p><strong>Phương pháp Agile</strong>: Linh hoạt, tập trung vào sự hợp tác và phản hồi nhanh chóng, phát triển phần mềm theo từng giai đoạn ngắn.</p></li>
+<li><p><strong>DevOps</strong>: Kết hợp phát triển phần mềm và vận hành hệ thống, nhằm tăng cường hiệu quả và tốc độ triển khai.</p></li>
+</ul>
+</section>
+<section id="quy-trinh-phat-trien-phan-mem">
+<h2>1. Quy Trình Phát Triển Phần Mềm<a class="headerlink" href="#quy-trinh-phat-trien-phan-mem" title="Link to this heading">#</a></h2>
+<p>Quy trình phát triển phần mềm là một tập hợp các hoạt động và nhiệm vụ có cấu trúc nhằm tạo ra một sản phẩm phần mềm hoàn chỉnh. Quy trình này thường bao gồm các giai đoạn chính sau:</p>
+<ol class="arabic simple">
+<li><p><strong>Thu thập yêu cầu</strong>: Xác định và ghi nhận các yêu cầu của khách hàng và người dùng cuối. Đây là bước quan trọng để đảm bảo rằng phần mềm phát triển đáp ứng đúng nhu cầu và mong đợi của người dùng.</p></li>
+<li><p><strong>Phân tích yêu cầu</strong>: Phân tích các yêu cầu đã thu thập để hiểu rõ hơn về chức năng và phi chức năng của hệ thống. Từ đó, tạo ra các tài liệu yêu cầu chi tiết.</p></li>
+<li><p><strong>Thiết kế hệ thống</strong>: Xây dựng kiến trúc và thiết kế chi tiết cho hệ thống phần mềm. Giai đoạn này bao gồm việc thiết kế giao diện người dùng, cơ sở dữ liệu, và các thành phần khác của hệ thống.</p></li>
+<li><p><strong>Lập trình</strong>: Viết mã nguồn để hiện thực hóa các thiết kế đã được phê duyệt. Đây là giai đoạn mà các lập trình viên sẽ tạo ra các module và chức năng của phần mềm.</p></li>
+<li><p><strong>Kiểm thử</strong>: Thực hiện các hoạt động kiểm thử để đảm bảo rằng phần mềm hoạt động đúng như mong đợi và không có lỗi. Các loại kiểm thử bao gồm kiểm thử đơn vị, kiểm thử tích hợp, kiểm thử hệ thống và kiểm thử chấp nhận.</p></li>
+<li><p><strong>Triển khai</strong>: Cài đặt và cấu hình phần mềm trong môi trường thực tế, chuẩn bị cho việc sử dụng bởi người dùng cuối. Giai đoạn này cũng bao gồm việc đào tạo người dùng và cung cấp tài liệu hướng dẫn.</p></li>
+<li><p><strong>Bảo trì</strong>: Sau khi phần mềm được triển khai, cần thực hiện các hoạt động bảo trì để sửa lỗi, cập nhật và nâng cấp phần mềm theo thời gian.</p></li>
+</ol>
+<p>Quy trình phát triển phần mềm có thể được thực hiện theo nhiều mô hình khác nhau, như mô hình thác nước, mô hình Agile, hoặc mô hình DevOps, tùy thuộc vào yêu cầu và đặc điểm của từng dự án.</p>
+</section>
+<section id="mo-hinh-thac-nuoc">
+<h2>2. Mô Hình Thác Nước<a class="headerlink" href="#mo-hinh-thac-nuoc" title="Link to this heading">#</a></h2>
+<p><img alt="Waterfall model" src="../_images/fig1.1-waterfall.webp" /></p>
+<p>Mô hình thác nước (Waterfall) là một quy trình phát triển phần mềm tuần tự, trong đó mỗi giai đoạn phải hoàn thành trước khi chuyển sang giai đoạn tiếp theo. Đây là một trong những mô hình phát triển phần mềm đầu tiên và được sử dụng rộng rãi trong những năm 1970 và 1980.</p>
+<section id="uu-diem">
+<h3>Ưu Điểm<a class="headerlink" href="#uu-diem" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dễ hiểu và dễ quản lý</strong>: Mô hình thác nước có cấu trúc rõ ràng và dễ theo dõi, giúp quản lý dự án dễ dàng hơn.</p></li>
+<li><p><strong>Tài liệu đầy đủ</strong>: Mỗi giai đoạn đều yêu cầu tài liệu chi tiết, giúp đảm bảo rằng tất cả các yêu cầu và thiết kế đều được ghi nhận và phê duyệt trước khi tiến hành.</p></li>
+<li><p><strong>Phù hợp với các dự án nhỏ</strong>: Đối với các dự án nhỏ và có yêu cầu rõ ràng, mô hình thác nước có thể là một lựa chọn hiệu quả.</p></li>
+</ul>
+</section>
+<section id="khuyet-diem">
+<h3>Khuyết Điểm<a class="headerlink" href="#khuyet-diem" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Thiếu linh hoạt</strong>: Mô hình thác nước không cho phép quay lại các giai đoạn trước đó, điều này có thể gây khó khăn nếu có sự thay đổi yêu cầu hoặc phát hiện lỗi trong các giai đoạn sau.</p></li>
+<li><p><strong>Khó khăn trong việc thích ứng với thay đổi</strong>: Do tính tuần tự của mô hình, việc thay đổi yêu cầu hoặc thiết kế trong quá trình phát triển có thể rất tốn kém và mất thời gian.</p></li>
+<li><p><strong>Không phù hợp với các dự án lớn và phức tạp</strong>: Đối với các dự án lớn và có yêu cầu phức tạp, mô hình thác nước có thể không đáp ứng được sự linh hoạt và tốc độ cần thiết.</p></li>
+</ul>
+<p>Mặc dù mô hình thác nước có những hạn chế, nhưng nó vẫn là một phương pháp phát triển phần mềm quan trọng và có thể được sử dụng hiệu quả trong các dự án có yêu cầu rõ ràng và ít thay đổi.</p>
+</section>
+</section>
+<section id="su-ra-doi-cua-agile">
+<h2>3. Sự Ra Đời Của Agile<a class="headerlink" href="#su-ra-doi-cua-agile" title="Link to this heading">#</a></h2>
+<section id="nhu-cau-ve-mot-phuong-phap-linh-hoat-hon">
+<h3>Nhu Cầu Về Một Phương Pháp Linh Hoạt Hơn<a class="headerlink" href="#nhu-cau-ve-mot-phuong-phap-linh-hoat-hon" title="Link to this heading">#</a></h3>
+<p>Trong những năm 1990, các phương pháp phát triển phần mềm truyền thống như mô hình thác nước đã bộc lộ nhiều hạn chế, đặc biệt là trong việc thích ứng với các thay đổi yêu cầu và môi trường phát triển nhanh chóng. Điều này đã tạo ra nhu cầu về một phương pháp linh hoạt hơn, có khả năng phản ứng nhanh chóng với các thay đổi và cải tiến liên tục.</p>
+</section>
+<section id="tap-trung-vao-su-hop-tac-va-phan-hoi-nhanh-chong">
+<h3>Tập Trung Vào Sự Hợp Tác Và Phản Hồi Nhanh Chóng<a class="headerlink" href="#tap-trung-vao-su-hop-tac-va-phan-hoi-nhanh-chong" title="Link to this heading">#</a></h3>
+<p>Agile ra đời với mục tiêu tăng cường sự hợp tác giữa các thành viên trong nhóm phát triển và khách hàng. Thay vì tuân theo một kế hoạch cứng nhắc, Agile khuyến khích sự tương tác liên tục và phản hồi nhanh chóng từ khách hàng, giúp đảm bảo rằng sản phẩm cuối cùng đáp ứng đúng nhu cầu và mong đợi của người dùng.</p>
+</section>
+<section id="phat-trien-phan-mem-theo-tung-giai-doan-ngan-iterations">
+<h3>Phát Triển Phần Mềm Theo Từng Giai Đoạn Ngắn (Iterations)<a class="headerlink" href="#phat-trien-phan-mem-theo-tung-giai-doan-ngan-iterations" title="Link to this heading">#</a></h3>
+<p>Một trong những đặc điểm nổi bật của Agile là phát triển phần mềm theo từng giai đoạn ngắn, gọi là iterations hoặc sprints. Mỗi giai đoạn thường kéo dài từ 1 đến 4 tuần và kết thúc bằng một phiên bản phần mềm có thể chạy được. Điều này cho phép nhóm phát triển liên tục cải tiến và điều chỉnh sản phẩm dựa trên phản hồi thực tế, đồng thời giảm thiểu rủi ro và tăng cường khả năng đáp ứng với các thay đổi.</p>
+</section>
+<section id="agile-manifesto">
+<h3>Agile Manifesto<a class="headerlink" href="#agile-manifesto" title="Link to this heading">#</a></h3>
+<p>Agile Manifesto, được công bố vào năm 2001 bởi một nhóm các chuyên gia phát triển phần mềm, là nền tảng của phương pháp Agile. Manifesto này bao gồm bốn giá trị cốt lõi và mười hai nguyên tắc, nhằm hướng dẫn các nhóm phát triển phần mềm làm việc hiệu quả hơn và đáp ứng tốt hơn nhu cầu của khách hàng.</p>
+<section id="bon-gia-tri-cot-loi">
+<h4>Bốn Giá Trị Cốt Lõi<a class="headerlink" href="#bon-gia-tri-cot-loi" title="Link to this heading">#</a></h4>
+<p><img alt="Agile Manifesto Values" src="https://blog.logrocket.com/wp-content/uploads/2022/12/agile-manifesto-4-values.png" />
+(Source: <a class="reference external" href="https://blog.logrocket.com/product-management/agile-manifesto-4-values-12-principles-explained/">LogRocket Blog</a>)</p>
+<ol class="arabic simple">
+<li><p><strong>Cá nhân và sự tương tác hơn là quy trình và công cụ</strong>: Đặt con người và sự giao tiếp lên hàng đầu, vì họ là yếu tố quyết định sự thành công của dự án.</p></li>
+<li><p><strong>Phần mềm chạy tốt hơn là tài liệu đầy đủ</strong>: Ưu tiên việc tạo ra phần mềm hoạt động, thay vì tập trung quá nhiều vào việc viết tài liệu chi tiết.</p></li>
+<li><p><strong>Hợp tác với khách hàng hơn là đàm phán hợp đồng</strong>: Khuyến khích sự hợp tác liên tục với khách hàng để đảm bảo sản phẩm cuối cùng đáp ứng đúng nhu cầu của họ.</p></li>
+<li><p><strong>Phản hồi với thay đổi hơn là bám sát kế hoạch</strong>: Linh hoạt và sẵn sàng thay đổi kế hoạch khi cần thiết để đáp ứng các yêu cầu mới hoặc thay đổi từ khách hàng.</p></li>
+</ol>
+</section>
+<section id="muoi-hai-nguyen-tac">
+<h4>Mười Hai Nguyên Tắc<a class="headerlink" href="#muoi-hai-nguyen-tac" title="Link to this heading">#</a></h4>
+<p><img alt="12 Agile Principles" src="https://www.designveloper.com/wp-content/uploads/2023/05/12-agile-principles-image.png" /></p>
+<ol class="arabic simple">
+<li><p><strong>Ưu tiên cao nhất là thỏa mãn khách hàng thông qua việc giao phần mềm có giá trị sớm và liên tục.</strong></p></li>
+<li><p><strong>Chào đón các thay đổi yêu cầu, ngay cả ở giai đoạn muộn của phát triển.</strong></p></li>
+<li><p><strong>Giao phần mềm chạy được thường xuyên, từ vài tuần đến vài tháng, với ưu tiên thời gian ngắn hơn.</strong></p></li>
+<li><p><strong>Các nhà kinh doanh và nhà phát triển phải làm việc cùng nhau hàng ngày trong suốt dự án.</strong></p></li>
+<li><p><strong>Xây dựng các dự án xung quanh các cá nhân có động lực.</strong></p></li>
+<li><p><strong>Phương pháp hiệu quả nhất để truyền đạt thông tin là trao đổi trực tiếp.</strong></p></li>
+<li><p><strong>Phần mềm chạy được là thước đo chính của tiến độ.</strong></p></li>
+<li><p><strong>Agile thúc đẩy phát triển bền vững.</strong></p></li>
+<li><p><strong>Liên tục chú ý đến sự xuất sắc về kỹ thuật và thiết kế tốt.</strong></p></li>
+<li><p><strong>Sự đơn giản là cần thiết.</strong></p></li>
+<li><p><strong>Các kiến trúc, yêu cầu và thiết kế tốt nhất xuất phát từ các nhóm tự tổ chức.</strong></p></li>
+<li><p><strong>Nhóm phản ánh về cách trở nên hiệu quả hơn, sau đó điều chỉnh và thay đổi hành vi cho phù hợp.</strong></p></li>
+</ol>
+<p>Agile Manifesto đã tạo ra một cuộc cách mạng trong cách tiếp cận phát triển phần mềm, giúp các nhóm làm việc hiệu quả hơn và tạo ra các sản phẩm chất lượng cao hơn.</p>
+</section>
+</section>
+<section id="tinh-lap-va-tang-truong-trong-agile">
+<h3>Tính Lặp Và Tăng Trưởng Trong Agile<a class="headerlink" href="#tinh-lap-va-tang-truong-trong-agile" title="Link to this heading">#</a></h3>
+<p>Agile sử dụng các chu kỳ phát triển ngắn, gọi là iterations hoặc sprints, để liên tục cải tiến và phát triển phần mềm. Mỗi iteration thường kéo dài từ 1 đến 4 tuần và kết thúc bằng một phiên bản phần mềm có thể chạy được. Điều này cho phép nhóm phát triển nhận được phản hồi nhanh chóng từ khách hàng và điều chỉnh sản phẩm theo nhu cầu thực tế.</p>
+<section id="loi-ich-cua-tinh-lap">
+<h4>Lợi Ích Của Tính Lặp<a class="headerlink" href="#loi-ich-cua-tinh-lap" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Phản hồi nhanh chóng</strong>: Mỗi iteration cung cấp một cơ hội để nhận phản hồi từ khách hàng và người dùng, giúp nhóm phát triển điều chỉnh sản phẩm kịp thời.</p></li>
+<li><p><strong>Giảm thiểu rủi ro</strong>: Bằng cách phát triển phần mềm theo từng giai đoạn ngắn, nhóm có thể phát hiện và giải quyết các vấn đề sớm hơn, giảm thiểu rủi ro cho dự án.</p></li>
+<li><p><strong>Tăng cường sự linh hoạt</strong>: Agile cho phép nhóm phát triển dễ dàng thích ứng với các thay đổi yêu cầu và môi trường, đảm bảo rằng sản phẩm cuối cùng đáp ứng đúng nhu cầu của khách hàng.</p></li>
+</ul>
+</section>
+<section id="tang-truong-lien-tuc">
+<h4>Tăng Trưởng Liên Tục<a class="headerlink" href="#tang-truong-lien-tuc" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Cải tiến liên tục</strong>: Agile khuyến khích sự cải tiến liên tục thông qua các cuộc họp đánh giá sau mỗi iteration, nơi nhóm thảo luận về những gì đã làm tốt và những gì cần cải thiện.</p></li>
+<li><p><strong>Phát triển bền vững</strong>: Agile thúc đẩy một tốc độ phát triển bền vững, giúp nhóm duy trì năng suất và chất lượng cao trong suốt dự án.</p></li>
+</ul>
+<p>Tính lặp và tăng trưởng trong Agile giúp đảm bảo rằng phần mềm được phát triển một cách linh hoạt, hiệu quả và đáp ứng tốt nhất nhu cầu của khách hàng.</p>
+</section>
+</section>
+</section>
+<section id="so-sanh-agile-va-waterfall">
+<h2>4. So Sánh Agile và Waterfall<a class="headerlink" href="#so-sanh-agile-va-waterfall" title="Link to this heading">#</a></h2>
+<p><img alt="Agile vs Waterfall" src="https://www.craftsilicon.com/wp-content/uploads/2023/06/Add-a-subheading-1-1-2048x1024.png" />
+(Source: <a class="reference external" href="https://www.craftsilicon.com/transforming-the-way-we-work-scrum-waterfall-or-just-go-agile-part1/">Craft Silicon</a>)</p>
+<section id="agile">
+<h3>Agile<a class="headerlink" href="#agile" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Linh hoạt và thích ứng</strong>: Agile cho phép thay đổi yêu cầu ngay cả ở giai đoạn muộn của dự án, giúp nhóm phát triển dễ dàng thích ứng với các thay đổi.</p></li>
+<li><p><strong>Phát triển theo từng giai đoạn ngắn</strong>: Sản phẩm được phát triển và giao hàng theo từng giai đoạn ngắn (iterations), giúp nhận phản hồi nhanh chóng và cải tiến liên tục.</p></li>
+<li><p><strong>Tập trung vào sự hợp tác</strong>: Agile khuyến khích sự hợp tác liên tục giữa các thành viên trong nhóm và khách hàng, đảm bảo rằng sản phẩm cuối cùng đáp ứng đúng nhu cầu của người dùng.</p></li>
+<li><p><strong>Phản hồi nhanh chóng</strong>: Nhận phản hồi từ khách hàng sau mỗi iteration, giúp điều chỉnh sản phẩm kịp thời.</p></li>
+<li><p><strong>Phát triển bền vững</strong>: Agile thúc đẩy một tốc độ phát triển bền vững, giúp duy trì năng suất và chất lượng cao.</p></li>
+</ul>
+</section>
+<section id="waterfall">
+<h3>Waterfall<a class="headerlink" href="#waterfall" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Quy trình tuần tự</strong>: Waterfall là một quy trình phát triển phần mềm tuần tự, trong đó mỗi giai đoạn phải hoàn thành trước khi chuyển sang giai đoạn tiếp theo.</p></li>
+<li><p><strong>Yêu cầu rõ ràng từ đầu</strong>: Tất cả các yêu cầu và thiết kế phải được xác định và phê duyệt trước khi bắt đầu phát triển, giúp đảm bảo rằng không có thay đổi lớn trong quá trình phát triển.</p></li>
+<li><p><strong>Tài liệu chi tiết</strong>: Mỗi giai đoạn đều yêu cầu tài liệu chi tiết, giúp đảm bảo rằng tất cả các yêu cầu và thiết kế đều được ghi nhận và phê duyệt trước khi tiến hành.</p></li>
+<li><p><strong>Dễ quản lý</strong>: Mô hình thác nước có cấu trúc rõ ràng và dễ theo dõi, giúp quản lý dự án dễ dàng hơn.</p></li>
+<li><p><strong>Không linh hoạt</strong>: Waterfall không cho phép quay lại các giai đoạn trước đó, điều này có thể gây khó khăn nếu có sự thay đổi yêu cầu hoặc phát hiện lỗi trong các giai đoạn sau.</p></li>
+</ul>
+</section>
+<section id="bang-so-sanh">
+<h3>Bảng So Sánh<a class="headerlink" href="#bang-so-sanh" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tiêu Chí</p></th>
+<th class="head"><p>Agile</p></th>
+<th class="head"><p>Waterfall</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Linh hoạt</strong></p></td>
+<td><p>Cao, dễ thích ứng với thay đổi</p></td>
+<td><p>Thấp, khó thay đổi sau khi đã bắt đầu</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Phát triển</strong></p></td>
+<td><p>Theo từng giai đoạn ngắn (iterations)</p></td>
+<td><p>Tuần tự, từng giai đoạn hoàn thành trước</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hợp tác</strong></p></td>
+<td><p>Liên tục với khách hàng và nhóm phát triển</p></td>
+<td><p>Ít hơn, tập trung vào tài liệu và quy trình</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Phản hồi</strong></p></td>
+<td><p>Nhanh chóng sau mỗi iteration</p></td>
+<td><p>Chậm, chỉ sau khi hoàn thành dự án</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Quản lý</strong></p></td>
+<td><p>Linh hoạt, yêu cầu quản lý liên tục</p></td>
+<td><p>Dễ quản lý với cấu trúc rõ ràng</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Tài liệu</strong></p></td>
+<td><p>Tập trung vào phần mềm chạy được</p></td>
+<td><p>Tài liệu chi tiết cho mỗi giai đoạn</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Agile và Waterfall đều có những ưu điểm và hạn chế riêng, và việc lựa chọn phương pháp nào phụ thuộc vào yêu cầu và đặc điểm của từng dự án. Agile phù hợp với các dự án cần sự linh hoạt và phản hồi nhanh chóng, trong khi Waterfall phù hợp với các dự án có yêu cầu rõ ràng và ít thay đổi.</p>
+<p><img alt="Agile vs all" src="https://hennyportman.wordpress.com/wp-content/uploads/2020/03/dia8.jpeg" />
+(Source: <a class="reference external" href="https://hennyportman.wordpress.com/">Henny Portman</a>)</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter3/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chương 3: Quản lý mã nguồn với Git và GitHub</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-moc-thoi-gian-quan-trong">Các Mốc Thời Gian Quan Trọng</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-phuong-phap-phat-trien-phan-mem">Các Phương Pháp Phát Triển Phần Mềm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quy-trinh-phat-trien-phan-mem">1. Quy Trình Phát Triển Phần Mềm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mo-hinh-thac-nuoc">2. Mô Hình Thác Nước</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uu-diem">Ưu Điểm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khuyet-diem">Khuyết Điểm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#su-ra-doi-cua-agile">3. Sự Ra Đời Của Agile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nhu-cau-ve-mot-phuong-phap-linh-hoat-hon">Nhu Cầu Về Một Phương Pháp Linh Hoạt Hơn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tap-trung-vao-su-hop-tac-va-phan-hoi-nhanh-chong">Tập Trung Vào Sự Hợp Tác Và Phản Hồi Nhanh Chóng</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phat-trien-phan-mem-theo-tung-giai-doan-ngan-iterations">Phát Triển Phần Mềm Theo Từng Giai Đoạn Ngắn (Iterations)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agile-manifesto">Agile Manifesto</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bon-gia-tri-cot-loi">Bốn Giá Trị Cốt Lõi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#muoi-hai-nguyen-tac">Mười Hai Nguyên Tắc</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tinh-lap-va-tang-truong-trong-agile">Tính Lặp Và Tăng Trưởng Trong Agile</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-ich-cua-tinh-lap">Lợi Ích Của Tính Lặp</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tang-truong-lien-tuc">Tăng Trưởng Liên Tục</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-sanh-agile-va-waterfall">4. So Sánh Agile và Waterfall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agile">Agile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waterfall">Waterfall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bang-so-sanh">Bảng So Sánh</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bao-An Nguyen + ChatGPT
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
