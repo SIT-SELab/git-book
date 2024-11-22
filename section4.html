@@ -425,14 +425,16 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quan-ly-quyen-truy-cap">Quản lý quyền truy cập</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request">4.2. Pull Request</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem">Tầm quan trọng của Pull Request trong các dự án phần mềm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo">Tầm quan trọng của Pull Request trong phần mềm nguồn mở</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quy-trinh-tao-va-review-pull-request">Quy trình tạo và review Pull Request</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#khi-nao-thi-tao-pull-request">Khi nào thì tạo Pull Request</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request">Ai có quyền chấp nhận hoặc từ chối Pull Request</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tao-pull-request">Tạo Pull Request</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-pull-request">Review Pull Request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request">4.2. Pull Request</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem">Tầm quan trọng của Pull Request trong các dự án phần mềm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo">Tầm quan trọng của Pull Request trong phần mềm nguồn mở</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quy-trinh-tao-va-review-pull-request">Quy trình tạo và review Pull Request</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#khi-nao-thi-tao-pull-request">Khi nào thì tạo Pull Request</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request">Ai có quyền chấp nhận hoặc từ chối Pull Request</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tao-pull-request">Tạo Pull Request</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#review-pull-request">Review Pull Request</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-va-quan-ly-cong-viec">4.3. Issues và Quản lý công việc</a><ul class="nav section-nav flex-column">
@@ -468,9 +470,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cong-cu-github-cli">6. Công cụ GitHub CLI</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-tinh-nang-co-ban-cua-github-cli">Các tính năng cơ bản của GitHub CLI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-github-cli">Cài đặt GitHub CLI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-github-cli">Sử dụng GitHub CLI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-tinh-nang-co-ban-cua-github-cli">6.1 Các tính năng cơ bản của GitHub CLI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-github-cli">6.2 Cài đặt GitHub CLI</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-github-cli">Sử dụng GitHub CLI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket">7. Tổng kết</a></li>
@@ -771,9 +775,8 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <li><p>Pull Request là gì?</p></li>
 </ul>
 <p>Pull Request (PR) là một tính năng của GitHub cho phép bạn thông báo cho người khác về những thay đổi mà bạn đã đẩy lên một branch trong repository. Khi bạn mở một Pull Request, bạn đang yêu cầu người khác xem xét và hợp nhất (merge) những thay đổi của bạn vào branch chính (thường là <code class="docutils literal notranslate"><span class="pre">main</span></code> hoặc <code class="docutils literal notranslate"><span class="pre">master</span></code>).</p>
-</section>
 <section id="tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem">
-<h3>Tầm quan trọng của Pull Request trong các dự án phần mềm<a class="headerlink" href="#tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem" title="Link to this heading">#</a></h3>
+<h4>Tầm quan trọng của Pull Request trong các dự án phần mềm<a class="headerlink" href="#tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Kiểm tra và đánh giá mã nguồn:</strong> Pull Request cho phép các thành viên trong nhóm xem xét và đánh giá mã nguồn trước khi hợp nhất vào branch chính. Điều này giúp phát hiện và sửa lỗi sớm, đảm bảo chất lượng mã nguồn.</p></li>
 <li><p><strong>Cộng tác và giao tiếp:</strong> Pull Request là một công cụ quan trọng để giao tiếp giữa các thành viên trong nhóm. Nó cho phép thảo luận về các thay đổi, đề xuất cải tiến và giải quyết các vấn đề kỹ thuật.</p></li>
@@ -782,7 +785,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </ul>
 </section>
 <section id="tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo">
-<h3>Tầm quan trọng của Pull Request trong phần mềm nguồn mở<a class="headerlink" href="#tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo" title="Link to this heading">#</a></h3>
+<h4>Tầm quan trọng của Pull Request trong phần mềm nguồn mở<a class="headerlink" href="#tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Đóng góp từ cộng đồng:</strong> Pull Request là cách chính để các nhà phát triển bên ngoài đóng góp vào các dự án nguồn mở. Nó cho phép các nhà phát triển gửi các bản vá lỗi, tính năng mới và cải tiến cho dự án.</p></li>
 <li><p><strong>Quản lý đóng góp:</strong> Pull Request giúp các maintainer của dự án nguồn mở quản lý và xem xét các đóng góp từ cộng đồng một cách hiệu quả. Nó cung cấp một quy trình rõ ràng để xem xét, thảo luận và hợp nhất các thay đổi.</p></li>
@@ -790,9 +793,9 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </ul>
 </section>
 <section id="quy-trinh-tao-va-review-pull-request">
-<h3>Quy trình tạo và review Pull Request<a class="headerlink" href="#quy-trinh-tao-va-review-pull-request" title="Link to this heading">#</a></h3>
+<h4>Quy trình tạo và review Pull Request<a class="headerlink" href="#quy-trinh-tao-va-review-pull-request" title="Link to this heading">#</a></h4>
 <section id="khi-nao-thi-tao-pull-request">
-<h4>Khi nào thì tạo Pull Request<a class="headerlink" href="#khi-nao-thi-tao-pull-request" title="Link to this heading">#</a></h4>
+<h5>Khi nào thì tạo Pull Request<a class="headerlink" href="#khi-nao-thi-tao-pull-request" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><strong>Khi hoàn thành một tính năng mới hoặc sửa lỗi:</strong> Sau khi bạn đã hoàn thành việc phát triển một tính năng mới hoặc sửa lỗi trên một branch riêng, bạn nên tạo Pull Request để yêu cầu xem xét và hợp nhất các thay đổi vào branch chính.</p></li>
 <li><p><strong>Khi cần sự xem xét từ người khác:</strong> Nếu bạn muốn nhận phản hồi hoặc sự xem xét từ các thành viên khác trong nhóm về các thay đổi của mình, bạn có thể tạo Pull Request để bắt đầu quá trình thảo luận và đánh giá.</p></li>
@@ -800,7 +803,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </ul>
 </section>
 <section id="ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request">
-<h4>Ai có quyền chấp nhận hoặc từ chối Pull Request<a class="headerlink" href="#ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request" title="Link to this heading">#</a></h4>
+<h5>Ai có quyền chấp nhận hoặc từ chối Pull Request<a class="headerlink" href="#ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><strong>Maintainer hoặc người quản lý dự án:</strong> Trong các dự án nguồn mở, maintainer hoặc người quản lý dự án thường có quyền chấp nhận hoặc từ chối Pull Request. Họ chịu trách nhiệm xem xét các thay đổi và quyết định xem chúng có nên được hợp nhất vào branch chính hay không.</p></li>
 <li><p><strong>Thành viên nhóm có quyền truy cập:</strong> Trong các dự án nội bộ hoặc nhóm, các thành viên có quyền truy cập phù hợp (thường là quyền Write hoặc Admin) có thể chấp nhận hoặc từ chối Pull Request. Quyền này thường được thiết lập bởi người quản lý dự án hoặc chủ sở hữu repository.</p></li>
@@ -809,7 +812,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <p>Quyền chấp nhận hoặc từ chối Pull Request thường được thiết lập dựa trên vai trò và trách nhiệm của các thành viên trong dự án, đảm bảo rằng mọi thay đổi đều được xem xét kỹ lưỡng trước khi được hợp nhất vào branch chính.</p>
 </section>
 <section id="tao-pull-request">
-<h4>Tạo Pull Request<a class="headerlink" href="#tao-pull-request" title="Link to this heading">#</a></h4>
+<h5>Tạo Pull Request<a class="headerlink" href="#tao-pull-request" title="Link to this heading">#</a></h5>
 <ol class="arabic simple">
 <li><p><strong>Tạo một branch mới:</strong></p></li>
 </ol>
@@ -869,7 +872,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </ul>
 </section>
 <section id="review-pull-request">
-<h4>Review Pull Request<a class="headerlink" href="#review-pull-request" title="Link to this heading">#</a></h4>
+<h5>Review Pull Request<a class="headerlink" href="#review-pull-request" title="Link to this heading">#</a></h5>
 <ol class="arabic simple">
 <li><p><strong>Xem xét Pull Request:</strong></p></li>
 </ol>
@@ -904,6 +907,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </li>
 </ul>
 <p>Quy trình này giúp đảm bảo rằng mọi thay đổi đều được xem xét kỹ lưỡng trước khi được hợp nhất vào branch chính, giúp duy trì chất lượng mã nguồn và sự ổn định của dự án.</p>
+</section>
 </section>
 </section>
 <section id="issues-va-quan-ly-cong-viec">
@@ -966,9 +970,6 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li><p><strong>Continuous Deployment (CD):</strong> CD là một phần mở rộng của CI, nơi các thay đổi mã nguồn được tự động triển khai vào môi trường sản xuất sau khi vượt qua các kiểm thử tự động. Điều này giúp đảm bảo rằng phần mềm luôn ở trạng thái có thể triển khai và các tính năng mới được phát hành nhanh chóng và liên tục.</p></li>
 </ul>
 <p>CI/CD giúp tăng cường sự hợp tác giữa các thành viên trong nhóm, cải thiện chất lượng mã nguồn và giảm thiểu rủi ro khi triển khai phần mềm.</p>
-<ul class="simple">
-<li><p>Thiết lập GitHub Actions.</p></li>
-</ul>
 </section>
 <section id="thiet-lap-github-actions">
 <h3>Thiết lập GitHub Actions<a class="headerlink" href="#thiet-lap-github-actions" title="Link to this heading">#</a></h3>
@@ -1205,7 +1206,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <h2>6. Công cụ GitHub CLI<a class="headerlink" href="#cong-cu-github-cli" title="Link to this heading">#</a></h2>
 <p>GitHub CLI (Command Line Interface) là một công cụ mạnh mẽ cho phép bạn tương tác với GitHub trực tiếp từ dòng lệnh. Với GitHub CLI, bạn có thể thực hiện nhiều tác vụ khác nhau mà không cần phải truy cập giao diện web của GitHub, giúp tăng cường hiệu quả và tốc độ làm việc của bạn.</p>
 <section id="cac-tinh-nang-co-ban-cua-github-cli">
-<h3>Các tính năng cơ bản của GitHub CLI<a class="headerlink" href="#cac-tinh-nang-co-ban-cua-github-cli" title="Link to this heading">#</a></h3>
+<h3>6.1 Các tính năng cơ bản của GitHub CLI<a class="headerlink" href="#cac-tinh-nang-co-ban-cua-github-cli" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Quản lý repository:</strong></p></li>
 </ol>
@@ -1243,7 +1244,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </ul>
 </section>
 <section id="cai-dat-github-cli">
-<h3>Cài đặt GitHub CLI<a class="headerlink" href="#cai-dat-github-cli" title="Link to this heading">#</a></h3>
+<h3>6.2 Cài đặt GitHub CLI<a class="headerlink" href="#cai-dat-github-cli" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Trên macOS:</strong></p></li>
 </ol>
@@ -1262,9 +1263,8 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <ul class="simple">
 <li><p>Sử dụng trình quản lý gói của hệ điều hành hoặc tải từ <a class="reference external" href="https://github.com/cli/cli/releases">GitHub CLI releases</a>.</p></li>
 </ul>
-</section>
 <section id="su-dung-github-cli">
-<h3>Sử dụng GitHub CLI<a class="headerlink" href="#su-dung-github-cli" title="Link to this heading">#</a></h3>
+<h4>Sử dụng GitHub CLI<a class="headerlink" href="#su-dung-github-cli" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>Đăng nhập vào GitHub:</strong></p></li>
 </ol>
@@ -1296,6 +1296,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </pre></div>
 </div>
 <p>GitHub CLI giúp bạn quản lý và tương tác với các dự án trên GitHub một cách nhanh chóng và hiệu quả, đặc biệt hữu ích cho các nhà phát triển yêu thích làm việc với dòng lệnh.</p>
+</section>
 </section>
 </section>
 <section id="tong-ket">
@@ -1406,14 +1407,16 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quan-ly-quyen-truy-cap">Quản lý quyền truy cập</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request">4.2. Pull Request</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem">Tầm quan trọng của Pull Request trong các dự án phần mềm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo">Tầm quan trọng của Pull Request trong phần mềm nguồn mở</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quy-trinh-tao-va-review-pull-request">Quy trình tạo và review Pull Request</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#khi-nao-thi-tao-pull-request">Khi nào thì tạo Pull Request</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request">Ai có quyền chấp nhận hoặc từ chối Pull Request</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tao-pull-request">Tạo Pull Request</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-pull-request">Review Pull Request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request">4.2. Pull Request</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-cac-du-an-phan-mem">Tầm quan trọng của Pull Request trong các dự án phần mềm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tam-quan-trong-cua-pull-request-trong-phan-mem-nguon-mo">Tầm quan trọng của Pull Request trong phần mềm nguồn mở</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quy-trinh-tao-va-review-pull-request">Quy trình tạo và review Pull Request</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#khi-nao-thi-tao-pull-request">Khi nào thì tạo Pull Request</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-co-quyen-chap-nhan-hoac-tu-choi-pull-request">Ai có quyền chấp nhận hoặc từ chối Pull Request</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tao-pull-request">Tạo Pull Request</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#review-pull-request">Review Pull Request</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-va-quan-ly-cong-viec">4.3. Issues và Quản lý công việc</a><ul class="nav section-nav flex-column">
@@ -1449,9 +1452,11 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cong-cu-github-cli">6. Công cụ GitHub CLI</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-tinh-nang-co-ban-cua-github-cli">Các tính năng cơ bản của GitHub CLI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-github-cli">Cài đặt GitHub CLI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-github-cli">Sử dụng GitHub CLI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-tinh-nang-co-ban-cua-github-cli">6.1 Các tính năng cơ bản của GitHub CLI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-github-cli">6.2 Cài đặt GitHub CLI</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#su-dung-github-cli">Sử dụng GitHub CLI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket">7. Tổng kết</a></li>

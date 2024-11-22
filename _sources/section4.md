@@ -212,29 +212,29 @@ GitHub Repository Settings](https://docs.github.com/assets/cb-28260/mw-1440/imag
 
 Pull Request (PR) là một tính năng của GitHub cho phép bạn thông báo cho người khác về những thay đổi mà bạn đã đẩy lên một branch trong repository. Khi bạn mở một Pull Request, bạn đang yêu cầu người khác xem xét và hợp nhất (merge) những thay đổi của bạn vào branch chính (thường là `main` hoặc `master`).
 
-### Tầm quan trọng của Pull Request trong các dự án phần mềm
+#### Tầm quan trọng của Pull Request trong các dự án phần mềm
 
 - **Kiểm tra và đánh giá mã nguồn:** Pull Request cho phép các thành viên trong nhóm xem xét và đánh giá mã nguồn trước khi hợp nhất vào branch chính. Điều này giúp phát hiện và sửa lỗi sớm, đảm bảo chất lượng mã nguồn.
 - **Cộng tác và giao tiếp:** Pull Request là một công cụ quan trọng để giao tiếp giữa các thành viên trong nhóm. Nó cho phép thảo luận về các thay đổi, đề xuất cải tiến và giải quyết các vấn đề kỹ thuật.
 - **Lịch sử thay đổi:** Pull Request cung cấp một lịch sử chi tiết về các thay đổi được thực hiện, bao gồm các commit, bình luận và quyết định liên quan. Điều này giúp theo dõi và quản lý các thay đổi dễ dàng hơn.
 - **Quy trình làm việc chuẩn hóa:** Pull Request giúp chuẩn hóa quy trình làm việc trong các dự án phần mềm, đặc biệt là các dự án nguồn mở. Nó đảm bảo rằng mọi thay đổi đều được xem xét kỹ lưỡng trước khi được hợp nhất vào branch chính.
 
-### Tầm quan trọng của Pull Request trong phần mềm nguồn mở
+#### Tầm quan trọng của Pull Request trong phần mềm nguồn mở
 
 - **Đóng góp từ cộng đồng:** Pull Request là cách chính để các nhà phát triển bên ngoài đóng góp vào các dự án nguồn mở. Nó cho phép các nhà phát triển gửi các bản vá lỗi, tính năng mới và cải tiến cho dự án.
 - **Quản lý đóng góp:** Pull Request giúp các maintainer của dự án nguồn mở quản lý và xem xét các đóng góp từ cộng đồng một cách hiệu quả. Nó cung cấp một quy trình rõ ràng để xem xét, thảo luận và hợp nhất các thay đổi.
 - **Minh bạch và công khai:** Pull Request là công khai và minh bạch, cho phép mọi người trong cộng đồng theo dõi và tham gia vào quá trình phát triển của dự án. Điều này thúc đẩy sự hợp tác và chia sẻ kiến thức trong cộng đồng nguồn mở.
 
-### Quy trình tạo và review Pull Request
+#### Quy trình tạo và review Pull Request
 
 
-#### Khi nào thì tạo Pull Request
+##### Khi nào thì tạo Pull Request
 
 - **Khi hoàn thành một tính năng mới hoặc sửa lỗi:** Sau khi bạn đã hoàn thành việc phát triển một tính năng mới hoặc sửa lỗi trên một branch riêng, bạn nên tạo Pull Request để yêu cầu xem xét và hợp nhất các thay đổi vào branch chính.
 - **Khi cần sự xem xét từ người khác:** Nếu bạn muốn nhận phản hồi hoặc sự xem xét từ các thành viên khác trong nhóm về các thay đổi của mình, bạn có thể tạo Pull Request để bắt đầu quá trình thảo luận và đánh giá.
 - **Khi làm việc theo quy trình chuẩn hóa:** Trong nhiều dự án, đặc biệt là các dự án nguồn mở, việc tạo Pull Request là một phần của quy trình làm việc chuẩn hóa để đảm bảo mọi thay đổi đều được xem xét kỹ lưỡng trước khi hợp nhất vào branch chính.
 
-#### Ai có quyền chấp nhận hoặc từ chối Pull Request
+##### Ai có quyền chấp nhận hoặc từ chối Pull Request
 
 - **Maintainer hoặc người quản lý dự án:** Trong các dự án nguồn mở, maintainer hoặc người quản lý dự án thường có quyền chấp nhận hoặc từ chối Pull Request. Họ chịu trách nhiệm xem xét các thay đổi và quyết định xem chúng có nên được hợp nhất vào branch chính hay không.
 - **Thành viên nhóm có quyền truy cập:** Trong các dự án nội bộ hoặc nhóm, các thành viên có quyền truy cập phù hợp (thường là quyền Write hoặc Admin) có thể chấp nhận hoặc từ chối Pull Request. Quyền này thường được thiết lập bởi người quản lý dự án hoặc chủ sở hữu repository.
@@ -242,7 +242,7 @@ Pull Request (PR) là một tính năng của GitHub cho phép bạn thông báo
 
 Quyền chấp nhận hoặc từ chối Pull Request thường được thiết lập dựa trên vai trò và trách nhiệm của các thành viên trong dự án, đảm bảo rằng mọi thay đổi đều được xem xét kỹ lưỡng trước khi được hợp nhất vào branch chính.
 
-#### Tạo Pull Request
+##### Tạo Pull Request
 
 1. **Tạo một branch mới:**
   - Mở terminal (Command Prompt, PowerShell, hoặc Git Bash).
@@ -281,7 +281,7 @@ Quyền chấp nhận hoặc từ chối Pull Request thường được thiết
   - Nhập tiêu đề và mô tả cho Pull Request của bạn.
   - Nhấp vào **Create pull request** để tạo Pull Request.
 
-#### Review Pull Request
+##### Review Pull Request
 
 1. **Xem xét Pull Request:**
   - Truy cập tab **Pull requests** trong repository của bạn trên GitHub.
@@ -349,7 +349,6 @@ Continuous Integration (CI) và Continuous Deployment (CD) là hai khái niệm 
 
 CI/CD giúp tăng cường sự hợp tác giữa các thành viên trong nhóm, cải thiện chất lượng mã nguồn và giảm thiểu rủi ro khi triển khai phần mềm.
 
-- Thiết lập GitHub Actions.
 
 ### Thiết lập GitHub Actions
 
@@ -545,7 +544,7 @@ Phân phối tài nguyên qua release giúp đảm bảo rằng người dùng l
 
 GitHub CLI (Command Line Interface) là một công cụ mạnh mẽ cho phép bạn tương tác với GitHub trực tiếp từ dòng lệnh. Với GitHub CLI, bạn có thể thực hiện nhiều tác vụ khác nhau mà không cần phải truy cập giao diện web của GitHub, giúp tăng cường hiệu quả và tốc độ làm việc của bạn.
 
-#### Các tính năng cơ bản của GitHub CLI
+### 6.1 Các tính năng cơ bản của GitHub CLI
 
 1. **Quản lý repository:**
   - Tạo, sao chép (clone), và xóa repository.
@@ -567,7 +566,7 @@ GitHub CLI (Command Line Interface) là một công cụ mạnh mẽ cho phép b
   - Tạo và quản lý workflow của GitHub Actions.
   - Kiểm tra trạng thái và nhật ký của các workflow.
 
-#### Cài đặt GitHub CLI
+### 6.2 Cài đặt GitHub CLI
 
 1. **Trên macOS:**
   ```sh
