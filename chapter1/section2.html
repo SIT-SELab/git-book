@@ -186,7 +186,10 @@
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="section1.html">Giới Thiệu Công Nghệ Phần Mềm Agile</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Chương 1. Công nghệ Phần mềm Agile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="section1.html">Giới Thiệu Công Nghệ Phần Mềm Agile</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/index.html">Chương 3: Quản lý mã nguồn với Git và GitHub</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter3/section1.html">Giới thiệu về Quản trị Mã Nguồn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter3/section2.html">Quản trị Mã Nguồn với Git</a></li>
@@ -395,13 +398,17 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-loops-trong-extreme-programming-xp">Feedback Loops trong Extreme Programming (XP)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lean-software-development">Lean Software Development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lean-software-development">4. Lean Software Development</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Lean Software Development</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-cong-cu-va-thuc-hanh-cua-lean">Các công cụ và thực hành của Lean</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal">Crystal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-driven-development-fdd">Feature-Driven Development (FDD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal">5. Crystal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-driven-development-fdd">6. Feature-Driven Development (FDD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-buoc-chinh-cua-fdd">Các bước chính của FDD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-ich-cua-fdd">Lợi ích của FDD</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -515,7 +522,7 @@
 </section>
 </section>
 <section id="lean-software-development">
-<h2>Lean Software Development<a class="headerlink" href="#lean-software-development" title="Link to this heading">#</a></h2>
+<h2>4. Lean Software Development<a class="headerlink" href="#lean-software-development" title="Link to this heading">#</a></h2>
 </section>
 <section id="id2">
 <h2>Lean Software Development<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -553,25 +560,46 @@
 </section>
 </section>
 <section id="crystal">
-<h2>Crystal<a class="headerlink" href="#crystal" title="Link to this heading">#</a></h2>
+<h2>5. Crystal<a class="headerlink" href="#crystal" title="Link to this heading">#</a></h2>
 <p>Crystal là một họ các phương pháp Agile, mỗi phương pháp được thiết kế để phù hợp với quy mô và độ phức tạp của dự án. Các phiên bản phổ biến của Crystal bao gồm:</p>
 <ul class="simple">
-<li><p>Crystal Clear</p></li>
-<li><p>Crystal Yellow</p></li>
-<li><p>Crystal Orange</p></li>
-<li><p>Crystal Red</p></li>
+<li><p><strong>Crystal Clear</strong>: Dành cho các dự án nhỏ với tối đa 6-8 thành viên. Crystal Clear tập trung vào giao tiếp trực tiếp, phản hồi nhanh và cải tiến liên tục.</p></li>
+<li><p><strong>Crystal Yellow</strong>: Dành cho các dự án vừa với khoảng 10-20 thành viên. Crystal Yellow bổ sung thêm các thực hành quản lý và kiểm soát để đảm bảo hiệu quả.</p></li>
+<li><p><strong>Crystal Orange</strong>: Dành cho các dự án lớn với khoảng 20-50 thành viên. Crystal Orange yêu cầu các công cụ và quy trình phức tạp hơn để quản lý sự phối hợp giữa các nhóm.</p></li>
+<li><p><strong>Crystal Red</strong>: Dành cho các dự án rất lớn với hơn 50 thành viên. Crystal Red bao gồm các thực hành và công cụ tiên tiến để quản lý sự phức tạp và đảm bảo chất lượng.</p></li>
 </ul>
+<p>Crystal nhấn mạnh vào việc tối ưu hóa giao tiếp và tương tác giữa các thành viên trong nhóm, đồng thời khuyến khích việc điều chỉnh quy trình làm việc để phù hợp với nhu cầu cụ thể của dự án. Các nguyên tắc chính của Crystal bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Giao tiếp trực tiếp</strong>: Khuyến khích các cuộc họp mặt trực tiếp và giao tiếp thường xuyên giữa các thành viên trong nhóm để đảm bảo sự hiểu biết và phối hợp tốt.</p></li>
+<li><p><strong>Phản hồi nhanh</strong>: Nhận phản hồi nhanh chóng từ khách hàng và các bên liên quan để điều chỉnh sản phẩm kịp thời.</p></li>
+<li><p><strong>Cải tiến liên tục</strong>: Thường xuyên đánh giá và cải tiến quy trình làm việc để tăng cường hiệu suất và chất lượng.</p></li>
+<li><p><strong>Tập trung vào con người</strong>: Đặt con người và sự tương tác lên hàng đầu, đảm bảo rằng các thành viên trong nhóm có môi trường làm việc tốt và động lực cao.</p></li>
+</ul>
+<p>Crystal giúp các nhóm phát triển phần mềm tạo ra sản phẩm chất lượng cao, đáp ứng nhanh chóng các thay đổi yêu cầu và tối ưu hóa quy trình làm việc dựa trên quy mô và độ phức tạp của dự án.</p>
 </section>
 <section id="feature-driven-development-fdd">
-<h2>Feature-Driven Development (FDD)<a class="headerlink" href="#feature-driven-development-fdd" title="Link to this heading">#</a></h2>
-<p>Feature-Driven Development (FDD) là một phương pháp Agile tập trung vào việc phát triển phần mềm thông qua các tính năng nhỏ, có thể giao hàng. Các bước chính của FDD bao gồm:</p>
+<h2>6. Feature-Driven Development (FDD)<a class="headerlink" href="#feature-driven-development-fdd" title="Link to this heading">#</a></h2>
+<p>Feature-Driven Development (FDD) là một phương pháp Agile tập trung vào việc phát triển phần mềm thông qua các tính năng nhỏ, có thể giao hàng. FDD giúp đảm bảo rằng phần mềm được phát triển một cách có cấu trúc và có thể dự đoán được, đồng thời đáp ứng nhanh chóng các thay đổi yêu cầu từ khách hàng. Các bước chính của FDD bao gồm:</p>
+<section id="cac-buoc-chinh-cua-fdd">
+<h3>Các bước chính của FDD<a class="headerlink" href="#cac-buoc-chinh-cua-fdd" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Phát triển mô hình tổng thể</strong>: Bước đầu tiên trong FDD là phát triển một mô hình tổng thể của hệ thống. Nhóm phát triển và các bên liên quan cùng nhau tạo ra một mô hình khái quát, giúp hiểu rõ hơn về hệ thống và các yêu cầu chính.</p></li>
+<li><p><strong>Xây dựng danh sách tính năng</strong>: Sau khi có mô hình tổng thể, nhóm phát triển xây dựng một danh sách các tính năng cần thiết để hoàn thành hệ thống. Mỗi tính năng là một phần nhỏ của hệ thống, có thể được phát triển và kiểm thử độc lập.</p></li>
+<li><p><strong>Lập kế hoạch theo tính năng</strong>: Nhóm phát triển lập kế hoạch cho từng tính năng trong danh sách. Kế hoạch này bao gồm việc xác định các nhiệm vụ cần thiết, phân công công việc và ước lượng thời gian hoàn thành.</p></li>
+<li><p><strong>Thiết kế theo tính năng</strong>: Mỗi tính năng được thiết kế chi tiết trước khi bắt đầu phát triển. Thiết kế bao gồm việc xác định các lớp, phương thức và các thành phần khác cần thiết để thực hiện tính năng.</p></li>
+<li><p><strong>Xây dựng theo tính năng</strong>: Sau khi thiết kế hoàn tất, nhóm phát triển bắt đầu xây dựng tính năng. Quá trình này bao gồm việc viết mã, kiểm thử và tích hợp tính năng vào hệ thống.</p></li>
+</ol>
+</section>
+<section id="loi-ich-cua-fdd">
+<h3>Lợi ích của FDD<a class="headerlink" href="#loi-ich-cua-fdd" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Phát triển mô hình tổng thể</p></li>
-<li><p>Xây dựng danh sách tính năng</p></li>
-<li><p>Lập kế hoạch theo tính năng</p></li>
-<li><p>Thiết kế theo tính năng</p></li>
-<li><p>Xây dựng theo tính năng</p></li>
+<li><p><strong>Tập trung vào tính năng</strong>: FDD giúp đảm bảo rằng phần mềm được phát triển theo các tính năng cụ thể, có thể giao hàng và kiểm thử độc lập. Điều này giúp tăng cường tính minh bạch và khả năng dự đoán của quy trình phát triển.</p></li>
+<li><p><strong>Phát triển có cấu trúc</strong>: FDD cung cấp một quy trình phát triển có cấu trúc, giúp nhóm phát triển làm việc hiệu quả và giảm thiểu rủi ro.</p></li>
+<li><p><strong>Phản hồi nhanh chóng</strong>: Bằng cách phát triển và kiểm thử các tính năng nhỏ, FDD giúp nhóm phát triển nhận phản hồi nhanh chóng từ khách hàng và các bên liên quan, từ đó điều chỉnh sản phẩm kịp thời.</p></li>
+<li><p><strong>Cải tiến liên tục</strong>: FDD khuyến khích việc cải tiến liên tục thông qua việc đánh giá và điều chỉnh quy trình làm việc dựa trên phản hồi và kết quả thực tế.</p></li>
 </ul>
+<p>FDD là một phương pháp Agile hiệu quả, giúp các nhóm phát triển phần mềm tạo ra sản phẩm chất lượng cao, đáp ứng nhanh chóng các thay đổi yêu cầu và tối ưu hóa quy trình làm việc.</p>
+</section>
 </section>
 </section>
 
@@ -636,13 +664,17 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-loops-trong-extreme-programming-xp">Feedback Loops trong Extreme Programming (XP)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lean-software-development">Lean Software Development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lean-software-development">4. Lean Software Development</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Lean Software Development</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-cong-cu-va-thuc-hanh-cua-lean">Các công cụ và thực hành của Lean</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal">Crystal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-driven-development-fdd">Feature-Driven Development (FDD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal">5. Crystal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-driven-development-fdd">6. Feature-Driven Development (FDD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-buoc-chinh-cua-fdd">Các bước chính của FDD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-ich-cua-fdd">Lợi ích của FDD</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

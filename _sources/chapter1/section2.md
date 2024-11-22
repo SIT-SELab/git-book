@@ -130,7 +130,7 @@ Các vòng phản hồi này giúp XP trở thành một phương pháp linh ho�
 
 
 
-## Lean Software Development
+## 4. Lean Software Development
 
 ## Lean Software Development
 
@@ -182,17 +182,45 @@ Nguồn: [Spiceworks](https://images.spiceworks.com/wp-content/uploads/2022/09/2
 Các công cụ và thực hành này giúp Lean Software Development trở thành một phương pháp hiệu quả để phát triển phần mềm, tối ưu hóa quy trình làm việc và cải thiện chất lượng sản phẩm.
 
 
-## Crystal
-Crystal là một họ các phương pháp Agile, mỗi phương pháp được thiết kế để phù hợp với quy mô và độ phức tạp của dự án. Các phiên bản phổ biến của Crystal bao gồm:
-- Crystal Clear
-- Crystal Yellow
-- Crystal Orange
-- Crystal Red
+## 5. Crystal
 
-## Feature-Driven Development (FDD)
-Feature-Driven Development (FDD) là một phương pháp Agile tập trung vào việc phát triển phần mềm thông qua các tính năng nhỏ, có thể giao hàng. Các bước chính của FDD bao gồm:
-- Phát triển mô hình tổng thể
-- Xây dựng danh sách tính năng
-- Lập kế hoạch theo tính năng
-- Thiết kế theo tính năng
-- Xây dựng theo tính năng
+Crystal là một họ các phương pháp Agile, mỗi phương pháp được thiết kế để phù hợp với quy mô và độ phức tạp của dự án. Các phiên bản phổ biến của Crystal bao gồm:
+
+- **Crystal Clear**: Dành cho các dự án nhỏ với tối đa 6-8 thành viên. Crystal Clear tập trung vào giao tiếp trực tiếp, phản hồi nhanh và cải tiến liên tục.
+- **Crystal Yellow**: Dành cho các dự án vừa với khoảng 10-20 thành viên. Crystal Yellow bổ sung thêm các thực hành quản lý và kiểm soát để đảm bảo hiệu quả.
+- **Crystal Orange**: Dành cho các dự án lớn với khoảng 20-50 thành viên. Crystal Orange yêu cầu các công cụ và quy trình phức tạp hơn để quản lý sự phối hợp giữa các nhóm.
+- **Crystal Red**: Dành cho các dự án rất lớn với hơn 50 thành viên. Crystal Red bao gồm các thực hành và công cụ tiên tiến để quản lý sự phức tạp và đảm bảo chất lượng.
+
+Crystal nhấn mạnh vào việc tối ưu hóa giao tiếp và tương tác giữa các thành viên trong nhóm, đồng thời khuyến khích việc điều chỉnh quy trình làm việc để phù hợp với nhu cầu cụ thể của dự án. Các nguyên tắc chính của Crystal bao gồm:
+
+- **Giao tiếp trực tiếp**: Khuyến khích các cuộc họp mặt trực tiếp và giao tiếp thường xuyên giữa các thành viên trong nhóm để đảm bảo sự hiểu biết và phối hợp tốt.
+- **Phản hồi nhanh**: Nhận phản hồi nhanh chóng từ khách hàng và các bên liên quan để điều chỉnh sản phẩm kịp thời.
+- **Cải tiến liên tục**: Thường xuyên đánh giá và cải tiến quy trình làm việc để tăng cường hiệu suất và chất lượng.
+- **Tập trung vào con người**: Đặt con người và sự tương tác lên hàng đầu, đảm bảo rằng các thành viên trong nhóm có môi trường làm việc tốt và động lực cao.
+
+Crystal giúp các nhóm phát triển phần mềm tạo ra sản phẩm chất lượng cao, đáp ứng nhanh chóng các thay đổi yêu cầu và tối ưu hóa quy trình làm việc dựa trên quy mô và độ phức tạp của dự án.
+
+## 6. Feature-Driven Development (FDD)
+Feature-Driven Development (FDD) là một phương pháp Agile tập trung vào việc phát triển phần mềm thông qua các tính năng nhỏ, có thể giao hàng. FDD giúp đảm bảo rằng phần mềm được phát triển một cách có cấu trúc và có thể dự đoán được, đồng thời đáp ứng nhanh chóng các thay đổi yêu cầu từ khách hàng. Các bước chính của FDD bao gồm:
+
+### Các bước chính của FDD
+
+1. **Phát triển mô hình tổng thể**: Bước đầu tiên trong FDD là phát triển một mô hình tổng thể của hệ thống. Nhóm phát triển và các bên liên quan cùng nhau tạo ra một mô hình khái quát, giúp hiểu rõ hơn về hệ thống và các yêu cầu chính.
+
+2. **Xây dựng danh sách tính năng**: Sau khi có mô hình tổng thể, nhóm phát triển xây dựng một danh sách các tính năng cần thiết để hoàn thành hệ thống. Mỗi tính năng là một phần nhỏ của hệ thống, có thể được phát triển và kiểm thử độc lập.
+
+3. **Lập kế hoạch theo tính năng**: Nhóm phát triển lập kế hoạch cho từng tính năng trong danh sách. Kế hoạch này bao gồm việc xác định các nhiệm vụ cần thiết, phân công công việc và ước lượng thời gian hoàn thành.
+
+4. **Thiết kế theo tính năng**: Mỗi tính năng được thiết kế chi tiết trước khi bắt đầu phát triển. Thiết kế bao gồm việc xác định các lớp, phương thức và các thành phần khác cần thiết để thực hiện tính năng.
+
+5. **Xây dựng theo tính năng**: Sau khi thiết kế hoàn tất, nhóm phát triển bắt đầu xây dựng tính năng. Quá trình này bao gồm việc viết mã, kiểm thử và tích hợp tính năng vào hệ thống.
+
+### Lợi ích của FDD
+
+- **Tập trung vào tính năng**: FDD giúp đảm bảo rằng phần mềm được phát triển theo các tính năng cụ thể, có thể giao hàng và kiểm thử độc lập. Điều này giúp tăng cường tính minh bạch và khả năng dự đoán của quy trình phát triển.
+- **Phát triển có cấu trúc**: FDD cung cấp một quy trình phát triển có cấu trúc, giúp nhóm phát triển làm việc hiệu quả và giảm thiểu rủi ro.
+- **Phản hồi nhanh chóng**: Bằng cách phát triển và kiểm thử các tính năng nhỏ, FDD giúp nhóm phát triển nhận phản hồi nhanh chóng từ khách hàng và các bên liên quan, từ đó điều chỉnh sản phẩm kịp thời.
+- **Cải tiến liên tục**: FDD khuyến khích việc cải tiến liên tục thông qua việc đánh giá và điều chỉnh quy trình làm việc dựa trên phản hồi và kết quả thực tế.
+
+FDD là một phương pháp Agile hiệu quả, giúp các nhóm phát triển phần mềm tạo ra sản phẩm chất lượng cao, đáp ứng nhanh chóng các thay đổi yêu cầu và tối ưu hóa quy trình làm việc.
+
