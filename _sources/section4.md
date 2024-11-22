@@ -208,7 +208,6 @@ GitHub Repository Settings](https://docs.github.com/assets/cb-28260/mw-1440/imag
 
 
 ### 4.2. Pull Request
-- Pull Request là gì?
 
 Pull Request (PR) là một tính năng của GitHub cho phép bạn thông báo cho người khác về những thay đổi mà bạn đã đẩy lên một branch trong repository. Khi bạn mở một Pull Request, bạn đang yêu cầu người khác xem xét và hợp nhất (merge) những thay đổi của bạn vào branch chính (thường là `main` hoặc `master`).
 
