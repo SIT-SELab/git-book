@@ -85,10 +85,6 @@ GitHub đã phát triển từ một nền tảng lưu trữ mã nguồn đơn g
 #### Tạo repository trên giao diện web.
 1. Đăng nhập vào tài khoản GitHub của bạn.
 2. Nhấp vào biểu tượng **+** ở góc trên bên phải và chọn **New repository**.
-
-![alt text](image.png)
-
-
 3. Điền thông tin cho repository mới:
   - **Repository name**: Tên của repository.
   - **Description**: Mô tả ngắn gọn về repository (không bắt buộc).

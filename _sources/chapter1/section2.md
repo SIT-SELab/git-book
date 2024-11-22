@@ -132,7 +132,7 @@ Các vòng phản hồi này giúp XP trở thành một phương pháp linh ho�
 
 ## 4. Lean Software Development
 
-## Lean Software Development
+
 
 Lean Software Development là một phương pháp Agile dựa trên các nguyên tắc của Lean Manufacturing, tập trung vào việc tối ưu hóa quy trình phát triển phần mềm. Các nguyên tắc chính của Lean bao gồm:
 
