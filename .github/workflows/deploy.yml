@@ -1,0 +1,25 @@
+name: Deploy HTML to GitHub Pages
+
+on:
+  push:
+    branches:
+      - gh-pages  # Kích hoạt workflow khi có thay đổi trong nhánh main
+  workflow_dispatch:  # Cho phép kích hoạt thủ công
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Thư mục chứa các file HTML (root của repo)
+          destination_dir: .  # Lưu nội dung vào thư mục gốc của nhánh gh-pages
+          keep_files: false  # Không giữ các file cũ trong gh-pages
