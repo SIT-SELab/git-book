@@ -4,9 +4,9 @@ Trong chương này, chúng ta sẽ tìm hiểu về cách quản lý mã nguồ
 
 ## Nội dung chính
 
-- [Giới thiệu về Quản trị Mã Nguồn](section1.md)
-- [Quản trị Mã Nguồn với Git](./section2.md)
-- [Xung đột và Cách Giải Quyết trong Git](./section3.md)
+- [Giới thiệu về quản trị mã nguồn](section1.md)
+- [Quản trị mã nguồn với Git](./section2.md)
+- [Xung đột và cách giải quyết trong Git](./section3.md)
 - [Quản lý mã nguồn với GitHub](./section4.md)
 
 
